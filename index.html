@@ -1965,20 +1965,13 @@
           <input type="hidden" name="Shipping" id="fsShipping">
           <input type="hidden" name="Order_Total" id="fsOrderTotal">
 
-          <!-- Destination Email for FormSubmit.co -->
-          <div class="formsubmit-config-box">
-            <label for="merchantEmailInput">FormSubmit.co Recipient Email</label>
-            <input type="email" id="merchantEmailInput" value="orders@vitalisscrubs.com" required placeholder="your-email@domain.com">
-            <small>Enter your email address to receive this order via FormSubmit.co (first submission sends an activation email).</small>
-          </div>
-
           <div class="checkout-field">
-            <label for="custName">Clinician Full Name *</label>
+            <label for="custName">Full Name *</label>
             <input type="text" id="custName" name="Clinician_Name" placeholder="Dr. Jordan Taylor, MD" required>
           </div>
 
           <div class="checkout-field">
-            <label for="custEmail">Clinician Email (for confirmation) *</label>
+            <label for="custEmail">Email Address *</label>
             <input type="email" id="custEmail" name="email" placeholder="jordan.taylor@hospital.org" required>
           </div>
 
@@ -2003,7 +1996,7 @@
           </div>
 
           <button type="submit" class="btn btn-primary" style="width:100%;" id="submitOrderBtn">
-            Submit Order via FormSubmit.co
+            Place Order 
           </button>
         </form>
       </div>
