@@ -1,1058 +1,2536 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MU SCRUBS | Engineered for 12-Hour Shifts</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Custom Tailwind Configuration for Medical-Grade Palette -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Plus Jakarta Sans', 'sans-serif'],
-                    },
-                    colors: {
-                        navy: {
-                            800: '#162A45',
-                            900: '#0F1E33',
-                            950: '#091322',
-                        },
-                        sage: {
-                            100: '#EBF3EE',
-                            500: '#5C8374',
-                            600: '#496B5E',
-                        },
-                        teal: {
-                            50: '#F0F9FA',
-                            100: '#D9F0F3',
-                            600: '#0D8A9E',
-                            700: '#0A6F80',
-                        },
-                        slate: {
-                            50: '#F8FAFC',
-                            100: '#F1F5F9',
-                            600: '#475569',
-                            800: '#1E293B',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-</head>
-<body class="bg-white text-slate-800 antialiased selection:bg-teal-600 selection:text-white">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VITALIS SCRUBS | Precision Medical Apparel for Clinicians</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ==========================================================================
+       CSS VARIABLES & DESIGN SYSTEM
+       ========================================================================== */
+    :root {
+      --navy-900: #0F1E33;
+      --navy-800: #162B47;
+      --navy-700: #213D63;
+      --teal-600: #0D8A9E;
+      --teal-500: #12A3BA;
+      --teal-50: #EAF7F9;
+      --sage-600: #4A6D60;
+      --sage-500: #5C8374;
+      --sage-100: #EBF2EF;
+      --white: #FFFFFF;
+      --slate-50: #F8FAFC;
+      --slate-100: #F1F5F9;
+      --slate-200: #E2E8F0;
+      --slate-300: #CBD5E1;
+      --slate-500: #64748B;
+      --slate-700: #334155;
+      --slate-900: #0F172A;
 
-    <!-- Top Announcement Bar -->
-    <div class="bg-navy-950 text-white text-xs sm:text-sm py-2.5 px-4 text-center font-medium tracking-wide">
-        <span>FREE EXPRESS SHIPPING ON ORDERS $75+</span>
-        <span class="mx-2 text-teal-400">•</span>
-        <span class="text-slate-300">20% HOSPITAL & STUDENT DISCOUNT AVAILABLE</span>
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --radius-full: 9999px;
+
+      --shadow-sm: 0 1px 3px rgba(15, 30, 51, 0.06);
+      --shadow-md: 0 8px 24px -4px rgba(15, 30, 51, 0.08);
+      --shadow-lg: 0 20px 40px -8px rgba(15, 30, 51, 0.14);
+
+      --transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --container-max: 1240px;
+    }
+
+    /* ==========================================================================
+       RESET & BASE STYLES
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--slate-700);
+      background-color: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .brand-logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--navy-900);
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-padding {
+      padding: 5.5rem 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--teal-600);
+      margin-bottom: 0.75rem;
+    }
+
+    /* ==========================================================================
+       BUTTONS
+       ========================================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.875rem 1.75rem;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+
+    .btn-primary {
+      background-color: var(--navy-900);
+      color: var(--white);
+      box-shadow: 0 4px 14px rgba(15, 30, 51, 0.2);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--teal-600);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(13, 138, 158, 0.28);
+    }
+
+    .btn-secondary {
+      background-color: var(--white);
+      color: var(--navy-900);
+      border: 1.5px solid var(--slate-200);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--navy-900);
+      background-color: var(--slate-50);
+    }
+
+    .btn-teal {
+      background-color: var(--teal-600);
+      color: var(--white);
+    }
+
+    .btn-teal:hover {
+      background-color: var(--teal-500);
+    }
+
+    /* ==========================================================================
+       ANNOUNCEMENT BAR & STICKY HEADER
+       ========================================================================== */
+    .announcement-bar {
+      background-color: var(--navy-900);
+      color: var(--white);
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-align: center;
+      padding: 0.55rem 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .announcement-bar span {
+      color: #6EE7B7;
+      font-weight: 600;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background-color: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--slate-200);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--navy-900);
+      letter-spacing: 0.03em;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--navy-900), var(--teal-600));
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--slate-700);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--teal-600);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: var(--teal-600);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .icon-btn {
+      position: relative;
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-full);
+      display: grid;
+      place-items: center;
+      color: var(--navy-900);
+      transition: var(--transition);
+    }
+
+    .icon-btn:hover {
+      background-color: var(--slate-100);
+      color: var(--teal-600);
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: 4px;
+      right: 3px;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 5px;
+      border-radius: var(--radius-full);
+      background-color: var(--teal-600);
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mobile-toggle {
+      display: none;
+    }
+
+    /* Expandable Search Bar */
+    .search-bar-drawer {
+      display: none;
+      background: var(--slate-50);
+      border-top: 1px solid var(--slate-200);
+      padding: 0.85rem 0;
+    }
+
+    .search-bar-drawer.active {
+      display: block;
+    }
+
+    .search-bar-form {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .search-bar-form input {
+      flex: 1;
+      padding: 0.65rem 1rem;
+      border: 1px solid var(--slate-300);
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .search-bar-form input:focus {
+      border-color: var(--teal-600);
+    }
+
+    /* ==========================================================================
+       HERO SECTION
+       ========================================================================== */
+    .hero {
+      background: linear-gradient(135deg, var(--slate-50) 0%, #EEF5F6 55%, var(--sage-100) 100%);
+      padding: 4.5rem 0 5.5rem;
+      border-bottom: 1px solid var(--slate-200);
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: var(--white);
+      border: 1px solid var(--slate-200);
+      padding: 0.4rem 0.9rem;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy-900);
+      margin-bottom: 1.35rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--sage-500);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 4.3vw, 3.65rem);
+      font-weight: 800;
+      margin-bottom: 1.25rem;
+      color: var(--navy-900);
+    }
+
+    .hero p {
+      font-size: 1.12rem;
+      color: var(--slate-700);
+      max-width: 540px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.25rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(15, 30, 51, 0.1);
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--navy-900);
+    }
+
+    .hero-stat span {
+      font-size: 0.82rem;
+      color: var(--slate-500);
+      font-weight: 500;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-image-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: linear-gradient(160deg, var(--navy-800) 0%, var(--navy-900) 100%);
+      box-shadow: var(--shadow-lg);
+      aspect-ratio: 4 / 4.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2rem;
+      color: var(--white);
+    }
+
+    .hero-garment-illustration {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-floating-badge {
+      position: absolute;
+      bottom: 1.75rem;
+      left: -1.5rem;
+      background: var(--white);
+      color: var(--navy-900);
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--slate-200);
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      max-width: 270px;
+    }
+
+    .badge-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background-color: var(--teal-50);
+      color: var(--teal-600);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .hero-floating-badge strong {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .hero-floating-badge span {
+      font-size: 0.78rem;
+      color: var(--slate-500);
+    }
+
+    /* ==========================================================================
+       TRUST / FEATURES BAR
+       ========================================================================== */
+    .trust-strip {
+      background-color: var(--white);
+      border-bottom: 1px solid var(--slate-200);
+      padding: 1.75rem 0;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .trust-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background-color: var(--slate-100);
+      color: var(--navy-900);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .trust-item h3 {
+      font-size: 0.94rem;
+      font-weight: 700;
+      margin-bottom: 0.1rem;
+    }
+
+    .trust-item p {
+      font-size: 0.8rem;
+      color: var(--slate-500);
+    }
+
+    /* ==========================================================================
+       FEATURED CATEGORIES
+       ========================================================================== */
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 2.5rem;
+      gap: 1.5rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.75rem, 3vw, 2.35rem);
+      font-weight: 800;
+    }
+
+    .section-header p {
+      color: var(--slate-500);
+      max-width: 520px;
+      margin-top: 0.4rem;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .category-card {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background-color: var(--slate-100);
+      border: 1px solid var(--slate-200);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 290px;
+      padding: 1.5rem;
+    }
+
+    .category-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--teal-600);
+    }
+
+    .category-card.navy-tint { background: linear-gradient(165deg, #EEF3F8 0%, #DCE6F2 100%); }
+    .category-card.sage-tint { background: linear-gradient(165deg, #F1F6F4 0%, #DCE9E3 100%); }
+    .category-card.teal-tint { background: linear-gradient(165deg, #ECF7F9 0%, #D5EEF2 100%); }
+    .category-card.slate-tint { background: linear-gradient(165deg, #F8FAFC 0%, #E2E8F0 100%); }
+
+    .category-art {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .category-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(6px);
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .category-meta h3 {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .category-meta span {
+      font-size: 0.78rem;
+      color: var(--slate-500);
+    }
+
+    .arrow-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: var(--navy-900);
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      transition: var(--transition);
+    }
+
+    .category-card:hover .arrow-circle {
+      background-color: var(--teal-600);
+      transform: translateX(2px);
+    }
+
+    /* ==========================================================================
+       BESTSELLERS PRODUCT GRID
+       ========================================================================== */
+    .bestsellers-section {
+      background-color: var(--slate-50);
+      border-top: 1px solid var(--slate-200);
+      border-bottom: 1px solid var(--slate-200);
+    }
+
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .filter-btn {
+      padding: 0.5rem 1.05rem;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--slate-700);
+      background-color: var(--white);
+      border: 1px solid var(--slate-200);
+      transition: var(--transition);
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background-color: var(--navy-900);
+      color: var(--white);
+      border-color: var(--navy-900);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .product-card {
+      background-color: var(--white);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .product-media {
+      position: relative;
+      background-color: var(--slate-100);
+      height: 270px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      overflow: hidden;
+    }
+
+    .product-tag {
+      position: absolute;
+      top: 0.9rem;
+      left: 0.9rem;
+      background-color: var(--white);
+      color: var(--navy-900);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.3rem 0.65rem;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .product-tag.sage {
+      background-color: var(--sage-500);
+      color: var(--white);
+    }
+
+    .product-tag.teal {
+      background-color: var(--teal-600);
+      color: var(--white);
+    }
+
+    .product-body {
+      padding: 1.35rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .product-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .product-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy-900);
+    }
+
+    .product-price {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--navy-900);
+    }
+
+    .product-subtitle {
+      font-size: 0.84rem;
+      color: var(--slate-500);
+      margin-bottom: 0.85rem;
+    }
+
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--slate-700);
+      margin-bottom: 0.95rem;
+    }
+
+    .stars {
+      color: #F59E0B;
+      letter-spacing: 1px;
+    }
+
+    .swatch-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.85rem;
+    }
+
+    .swatches {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .swatch-btn {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--white);
+      box-shadow: 0 0 0 1px var(--slate-300);
+      transition: transform 0.15s ease;
+    }
+
+    .swatch-btn.selected {
+      box-shadow: 0 0 0 2px var(--navy-900);
+      transform: scale(1.1);
+    }
+
+    .selected-color-name {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--slate-500);
+    }
+
+    /* Size selector pills */
+    .size-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .size-label {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--slate-500);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .size-pills {
+      display: flex;
+      gap: 0.3rem;
+    }
+
+    .size-btn {
+      min-width: 30px;
+      height: 26px;
+      padding: 0 0.4rem;
+      border-radius: 5px;
+      border: 1px solid var(--slate-200);
+      background: var(--slate-50);
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--slate-700);
+      transition: var(--transition);
+    }
+
+    .size-btn:hover {
+      border-color: var(--navy-900);
+    }
+
+    .size-btn.selected {
+      background-color: var(--navy-900);
+      color: var(--white);
+      border-color: var(--navy-900);
+    }
+
+    .add-to-bag-btn {
+      margin-top: auto;
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background-color: var(--slate-100);
+      color: var(--navy-900);
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--slate-200);
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .add-to-bag-btn:hover {
+      background-color: var(--navy-900);
+      color: var(--white);
+      border-color: var(--navy-900);
+    }
+
+    /* ==========================================================================
+       FABRIC TECHNOLOGY SPOTLIGHT
+       ========================================================================== */
+    .tech-section {
+      background-color: var(--navy-900);
+      color: var(--white);
+    }
+
+    .tech-section h2, .tech-section h3 {
+      color: var(--white);
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .tech-visual {
+      background: linear-gradient(145deg, var(--navy-800), #1A365D);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      position: relative;
+    }
+
+    .weave-diagram {
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+    }
+
+    .weave-layer {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: var(--radius-md);
+      padding: 1.15rem 1.35rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .weave-layer strong {
+      display: block;
+      font-size: 0.98rem;
+      color: #6EE7B7;
+      margin-bottom: 0.2rem;
+    }
+
+    .weave-layer span {
+      font-size: 0.84rem;
+      color: var(--slate-300);
+    }
+
+    .weave-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.3rem 0.65rem;
+      border-radius: var(--radius-full);
+      background: rgba(18, 163, 186, 0.22);
+      color: #7DD3FC;
+    }
+
+    .tech-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .tech-feature h3 {
+      font-size: 1.02rem;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .tech-feature p {
+      font-size: 0.88rem;
+      color: var(--slate-300);
+    }
+
+    /* ==========================================================================
+       CLINICIAN REVIEWS & HOSPITAL GROUP ORDERS
+       ========================================================================== */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 4.5rem;
+    }
+
+    .review-card {
+      background-color: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .review-quote {
+      font-size: 0.95rem;
+      color: var(--slate-700);
+      margin: 0.85rem 0 1.5rem;
+    }
+
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .reviewer-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background-color: var(--navy-900);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.88rem;
+      display: grid;
+      place-items: center;
+    }
+
+    .reviewer strong {
+      display: block;
+      font-size: 0.92rem;
+      color: var(--navy-900);
+    }
+
+    .reviewer span {
+      font-size: 0.78rem;
+      color: var(--slate-500);
+    }
+
+    .group-banner {
+      background: linear-gradient(120deg, var(--sage-100) 0%, var(--teal-50) 100%);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .group-banner h3 {
+      font-size: 1.65rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .group-banner p {
+      max-width: 560px;
+      color: var(--slate-700);
+    }
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+    .site-footer {
+      background-color: var(--navy-900);
+      color: var(--slate-300);
+      padding: 4.5rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.3fr;
+      gap: 2.5rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-brand .brand-logo {
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.88rem;
+      max-width: 300px;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col h4 {
+      color: var(--white);
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      font-size: 0.88rem;
+    }
+
+    .footer-col a:hover {
+      color: var(--white);
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 0.65rem 0.9rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--white);
+      font-size: 0.88rem;
+      outline: none;
+    }
+
+    .newsletter-form input::placeholder {
+      color: var(--slate-300);
+    }
+
+    .footer-bottom {
+      padding-top: 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      color: var(--slate-500);
+    }
+
+    /* ==========================================================================
+       SLIDE-OVER CART & FORMSUBMIT CHECKOUT DRAWER
+       ========================================================================== */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 30, 51, 0.52);
+      backdrop-filter: blur(3px);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+    }
+
+    .drawer-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: -460px;
+      width: 100%;
+      max-width: 450px;
+      height: 100vh;
+      background: var(--white);
+      z-index: 1001;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+      transition: right 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .cart-drawer.open {
+      right: 0;
+    }
+
+    .drawer-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--slate-200);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .drawer-header h3 {
+      font-size: 1.15rem;
+    }
+
+    .shipping-meter {
+      background-color: var(--teal-50);
+      padding: 0.75rem 1.5rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--navy-900);
+      border-bottom: 1px solid var(--slate-200);
+    }
+
+    .progress-track {
+      height: 6px;
+      background: var(--slate-200);
+      border-radius: var(--radius-full);
+      margin-top: 0.45rem;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--teal-600);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 1rem;
+      padding-bottom: 1.15rem;
+      margin-bottom: 1.15rem;
+      border-bottom: 1px solid var(--slate-200);
+    }
+
+    .cart-item-swatch {
+      width: 56px;
+      height: 68px;
+      border-radius: var(--radius-sm);
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .cart-item-info {
+      flex: 1;
+    }
+
+    .cart-item-info h4 {
+      font-size: 0.94rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .cart-item-info p {
+      font-size: 0.8rem;
+      color: var(--slate-500);
+      margin-bottom: 0.5rem;
+    }
+
+    .qty-controls {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--slate-300);
+      border-radius: var(--radius-sm);
+    }
+
+    .qty-controls button {
+      padding: 0.2rem 0.6rem;
+      font-weight: 700;
+      color: var(--navy-900);
+    }
+
+    .qty-controls span {
+      padding: 0 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* FormSubmit Checkout Form inside Drawer */
+    .checkout-panel {
+      display: none;
+    }
+
+    .checkout-panel.active {
+      display: block;
+    }
+
+    .back-to-bag-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--teal-600);
+      margin-bottom: 1rem;
+    }
+
+    .formsubmit-config-box {
+      background-color: var(--slate-50);
+      border: 1px dashed var(--teal-600);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .formsubmit-config-box label {
+      display: block;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--teal-600);
+      margin-bottom: 0.3rem;
+    }
+
+    .formsubmit-config-box small {
+      display: block;
+      font-size: 0.74rem;
+      color: var(--slate-500);
+      margin-top: 0.3rem;
+      line-height: 1.35;
+    }
+
+    .checkout-field {
+      margin-bottom: 0.9rem;
+    }
+
+    .checkout-field label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--navy-900);
+      margin-bottom: 0.3rem;
+    }
+
+    .checkout-field input,
+    .checkout-field textarea {
+      width: 100%;
+      padding: 0.65rem 0.8rem;
+      border: 1px solid var(--slate-300);
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      color: var(--slate-900);
+      background: var(--white);
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .checkout-field input:focus,
+    .checkout-field textarea:focus {
+      border-color: var(--teal-600);
+      box-shadow: 0 0 0 3px rgba(13, 138, 158, 0.12);
+    }
+
+    .order-recap-card {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem;
+      margin: 1rem 0;
+      font-size: 0.82rem;
+    }
+
+    .order-recap-card h5 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--slate-500);
+      margin-bottom: 0.45rem;
+    }
+
+    .order-recap-lines {
+      color: var(--slate-700);
+      white-space: pre-line;
+      line-height: 1.5;
+    }
+
+    .drawer-footer {
+      padding: 1.25rem 1.5rem;
+      border-top: 1px solid var(--slate-200);
+      background: var(--slate-50);
+    }
+
+    .subtotal-row {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--navy-900);
+      margin-bottom: 0.35rem;
+    }
+
+    .drawer-note {
+      font-size: 0.78rem;
+      color: var(--slate-500);
+      margin-bottom: 0.9rem;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--navy-900);
+      color: var(--white);
+      padding: 0.85rem 1.25rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 500;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(120%);
+      opacity: 0;
+      transition: var(--transition);
+      z-index: 1100;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE DESIGN
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .hero-grid, .tech-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-floating-badge {
+        left: 1rem;
+      }
+
+      .category-grid, .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .product-grid, .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--slate-200);
+        box-shadow: var(--shadow-md);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .mobile-toggle {
+        display: grid;
+      }
+
+      .section-header, .group-banner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .product-grid, .reviews-grid, .category-grid, .trust-grid, .tech-list, .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar">
+    Complimentary Express Shipping on Orders Over $100 &nbsp;•&nbsp; <span>15% Off</span> with Verified NPI or Hospital ID
+  </div>
+
+  <!-- Sticky Navigation Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="brand-logo" aria-label="Vitalis Scrubs Home">
+        <span class="brand-mark">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round">
+            <path d="M12 5v14M5 12h14"/>
+          </svg>
+        </span>
+        VITALIS
+      </a>
+
+      <nav class="nav-links" id="primaryNav" aria-label="Primary Navigation">
+        <a href="#bestsellers" data-filter="all">Shop All</a>
+        <a href="#bestsellers" data-filter="tops">Scrub Tops</a>
+        <a href="#bestsellers" data-filter="pants">Scrub Pants</a>
+        <a href="#bestsellers" data-filter="outerwear">Lab Coats & Jackets</a>
+        <a href="#fabric-tech">VitalWeave™ Tech</a>
+        <a href="#group-orders">Hospital Orders</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="searchToggleBtn" aria-label="Toggle Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+          </svg>
+        </button>
+        <button class="icon-btn" id="openCartBtn" aria-label="Open Shopping Bag">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="cart-badge" id="cartCount">2</span>
+        </button>
+        <button class="icon-btn mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
     </div>
 
-    <!-- Sticky Navigation Bar -->
-    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 transition-all">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16 sm:h-20">
-                
-                <!-- Mobile Menu Button -->
-                <div class="flex items-center lg:hidden">
-                    <button id="mobile-menu-btn" type="button" class="p-2.5 rounded-lg text-navy-900 hover:bg-slate-100 focus:outline-none" aria-label="Open menu">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                        </svg>
-                    </button>
-                </div>
+    <!-- Expandable Search Bar -->
+    <div class="search-bar-drawer" id="searchDrawer">
+      <div class="container">
+        <form class="search-bar-form" id="searchForm">
+          <input type="search" id="searchInput" placeholder="Search V-neck tops, cargo joggers, consultation lab coats..." aria-label="Search products">
+          <button type="submit" class="btn btn-primary" style="padding: 0.65rem 1.25rem;">Search</button>
+        </form>
+      </div>
+    </div>
+  </header>
 
-                <!-- Brand Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="#" class="flex items-center gap-2.5 group">
-                        <div class="w-9 h-9 rounded-lg bg-navy-900 flex items-center justify-center text-white group-hover:bg-teal-600 transition-colors">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>
-                            </svg>
-                        </div>
-                        <div class="flex flex-col">
-                            <span class="font-display font-extrabold text-xl tracking-tight text-navy-900 leading-none">VITALIS</span>
-                            <span class="text-[10px] font-bold tracking-[0.22em] text-teal-600 uppercase mt-0.5">Medical Apparel</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Desktop Navigation Links -->
-                <nav class="hidden lg:flex items-center space-x-8">
-                    <a href="#bestsellers" class="text-sm font-semibold text-navy-900 hover:text-teal-600 transition-colors py-2">Shop Women</a>
-                    <a href="#bestsellers" class="text-sm font-semibold text-navy-900 hover:text-teal-600 transition-colors py-2">Shop Men</a>
-                    <a href="#bestsellers" class="text-sm font-semibold text-navy-900 hover:text-teal-600 transition-colors py-2">Lab Coats</a>
-                    <a href="#fabric-tech" class="text-sm font-semibold text-navy-900 hover:text-teal-600 transition-colors py-2">Fabric Tech</a>
-                    <a href="#bulk-orders" class="text-sm font-semibold text-navy-900 hover:text-teal-600 transition-colors py-2">Bulk Orders</a>
-                </nav>
-
-                <!-- Search & Cart Actions -->
-                <div class="flex items-center space-x-2 sm:space-x-4">
-                    <!-- Search Toggle -->
-                    <button id="search-btn" type="button" class="p-2.5 rounded-full text-navy-900 hover:bg-slate-100 transition-colors" aria-label="Search">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                        </svg>
-                    </button>
-
-                    <!-- Cart Drawer Trigger -->
-                    <button id="cart-btn" type="button" class="relative p-2.5 rounded-full text-navy-900 hover:bg-slate-100 transition-colors flex items-center gap-1.5" aria-label="Shopping Bag">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
-                        </svg>
-                        <span id="cart-badge" class="bg-teal-600 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">2</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Expandable Search Bar -->
-        <div id="search-bar" class="hidden border-t border-slate-200 bg-slate-50 px-4 py-3">
-            <div class="max-w-3xl mx-auto flex items-center gap-3">
-                <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                </svg>
-                <input type="text" placeholder="Search scrubs, jogger pants, antimicrobial lab coats..." class="w-full bg-transparent text-sm text-navy-900 placeholder-slate-400 focus:outline-none">
-                <button id="close-search" class="text-xs font-semibold text-slate-500 hover:text-navy-900 px-2 py-1">ESC</button>
-            </div>
-        </div>
-
-        <!-- Mobile Navigation Drawer -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-200 px-4 pt-3 pb-6 space-y-2 shadow-xl">
-            <a href="#bestsellers" class="mobile-link block px-3 py-3 rounded-lg text-base font-semibold text-navy-900 hover:bg-slate-50">Shop Women</a>
-            <a href="#bestsellers" class="mobile-link block px-3 py-3 rounded-lg text-base font-semibold text-navy-900 hover:bg-slate-50">Shop Men</a>
-            <a href="#bestsellers" class="mobile-link block px-3 py-3 rounded-lg text-base font-semibold text-navy-900 hover:bg-slate-50">Lab Coats</a>
-            <a href="#fabric-tech" class="mobile-link block px-3 py-3 rounded-lg text-base font-semibold text-navy-900 hover:bg-slate-50">Fabric Tech</a>
-            <a href="#bulk-orders" class="mobile-link block px-3 py-3 rounded-lg text-base font-semibold text-navy-900 hover:bg-slate-50">Bulk Orders</a>
-        </div>
-    </header>
-
+  <main>
     <!-- Hero Section -->
-    <section class="relative bg-navy-900 text-white overflow-hidden">
-        <!-- Subtle Medical Grid Pattern Overlay -->
-        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#0D8A9E 1px, transparent 1px); background-size: 24px 24px;"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-28 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-                
-                <!-- Left Copy -->
-                <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy-800 border border-teal-600/40 text-teal-100 text-xs font-semibold tracking-wide uppercase">
-                        <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
-                        Clinical-Grade Performance Apparel
-                    </div>
-                    
-                    <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1]">
-                        Engineered for <span class="text-teal-400">12-Hour Shifts.</span>
-                    </h1>
-                    
-                    <p class="text-base sm:text-lg text-slate-300 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                        Precision-tailored medical scrubs crafted with our proprietary VitalWeave™ fabric—delivering unrestricted 4-way stretch, hospital-grade antimicrobial protection, and breathable moisture-wicking comfort from rounds to call.
-                    </p>
-                    
-                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-                        <a href="#bestsellers" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-semibold text-sm sm:text-base shadow-lg shadow-teal-950/50 transition-all text-center">
-                            Shop Women's
-                        </a>
-                        <a href="#bestsellers" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-sm sm:text-base backdrop-blur-sm transition-all text-center">
-                            Shop Men's
-                        </a>
-                    </div>
-
-                    <!-- Micro Social Proof -->
-                    <div class="pt-4 flex items-center justify-center lg:justify-start gap-4 text-xs sm:text-sm text-slate-300">
-                        <div class="flex text-amber-400">
-                            ★★★★★
-                        </div>
-                        <span>Trusted by <strong class="text-white">45,000+</strong> Physicians, Surgeons & RNs</span>
-                    </div>
-                </div>
-
-                <!-- Right Visual Showcase -->
-                <div class="lg:col-span-6 relative">
-                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-navy-800 aspect-[4/3] sm:aspect-[16/11]">
-                        <img 
-                            src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1200&q=80" 
-                            onerror="this.src='https://placehold.co/800x600/162A45/FFFFFF?text=Vitalis+Clinical+Scrubs'" 
-                            alt="Medical professionals wearing Vitalis performance scrubs in hospital corridor" 
-                            class="w-full h-full object-cover object-center"
-                        >
-                        <!-- Floating Clinical Spec Card -->
-                        <div class="absolute bottom-4 left-4 right-4 sm:right-auto sm:max-w-xs bg-navy-950/90 backdrop-blur-md border border-white/15 rounded-xl p-4 shadow-xl">
-                            <div class="flex items-center justify-between mb-1">
-                                <span class="text-xs font-bold uppercase tracking-wider text-teal-400">VitalWeave™ 2.0</span>
-                                <span class="text-xs text-slate-400">ISO-20743 Certified</span>
-                            </div>
-                            <p class="text-sm font-medium text-white">99.9% Bacterial Reduction & Hydrophobic Fluid Barrier</p>
-                        </div>
-                    </div>
-                </div>
-
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-pill">
+            <span class="hero-pill-dot"></span>
+            Engineered with Physicians & Trauma Nurses
+          </div>
+          <h1>Engineered for 14-Hour Shifts.</h1>
+          <p>
+            Tailored medical apparel crafted from fluid-repellent, 4-way stretch <strong>VitalWeave™</strong> fabric. Designed with ergonomic pocket architecture so you stay cool, agile, and sharp from morning rounds to night call.
+          </p>
+          <div class="hero-cta-group">
+            <a href="#bestsellers" class="btn btn-primary">Shop Core Collection</a>
+            <a href="#fabric-tech" class="btn btn-secondary">Explore Fabric Tech</a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <strong>360°</strong>
+              <span>4-Way Mechanical Stretch</span>
             </div>
+            <div class="hero-stat">
+              <strong>99.4%</strong>
+              <span>Antimicrobial Barrier Rating</span>
+            </div>
+            <div class="hero-stat">
+              <strong>18,000+</strong>
+              <span>Physicians & RNs Outfitted</span>
+            </div>
+          </div>
         </div>
+
+        <div class="hero-visual">
+          <div class="hero-image-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem; color:#94A3B8;">
+              <span>CORE SERIES 04 // DEEP NAVY</span>
+              <span style="color:#6EE7B7; font-weight:600;">● IN STOCK</span>
+            </div>
+
+            <!-- Tailored Scrub Set Vector Illustration -->
+            <div class="hero-garment-illustration" aria-hidden="true">
+              <svg width="290" height="330" viewBox="0 0 300 340" fill="none">
+                <!-- Scrub Top -->
+                <path d="M92 38L52 62L32 124L68 136L78 96V182H222V96L232 136L268 124L248 62L208 38C192 52 172 60 150 60C128 60 108 52 92 38Z" fill="#1E3A5F" stroke="#38BDF8" stroke-opacity="0.35" stroke-width="2"/>
+                <!-- V-Neck Collar -->
+                <path d="M114 43L150 92L186 43" stroke="#7DD3FC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- Chest Pocket + Pen Slot -->
+                <rect x="168" y="96" width="34" height="40" rx="4" fill="#162B47" stroke="#64748B" stroke-width="1.5"/>
+                <line x1="177" y1="96" x2="177" y2="136" stroke="#64748B" stroke-width="1.2"/>
+                <!-- Badge Loop -->
+                <rect x="96" y="88" width="14" height="6" rx="2" fill="#0D8A9E"/>
+                <!-- Scrub Jogger Pants -->
+                <path d="M84 190H216L228 318H176L150 232L124 318H72L84 190Z" fill="#162B47" stroke="#38BDF8" stroke-opacity="0.3" stroke-width="2"/>
+                <!-- Drawstring -->
+                <path d="M144 192C142 206 138 214 134 220M156 192C158 206 162 214 166 220" stroke="#6EE7B7" stroke-width="2" stroke-linecap="round"/>
+                <!-- Cargo Pockets -->
+                <rect x="78" y="236" width="24" height="36" rx="4" fill="#1E3A5F" stroke="#64748B" stroke-width="1.2"/>
+                <rect x="198" y="236" width="24" height="36" rx="4" fill="#1E3A5F" stroke="#64748B" stroke-width="1.2"/>
+              </svg>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.82rem; color:#CBD5E1; border-top:1px solid rgba(255,255,255,0.12); padding-top:0.9rem;">
+              <span>Apex 3-Pocket Top + Meridian Jogger</span>
+              <strong style="color:#FFFFFF;">$94.00 Set</strong>
+            </div>
+          </div>
+
+          <div class="hero-floating-badge">
+            <div class="badge-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div>
+              <strong>Fluid-Shield™ Finish</strong>
+              <span>Repels spills & washes wrinkle-free</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Trust & Feature Highlights Bar -->
-    <section class="bg-sage-100/70 border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-                
-                <!-- Feature 1 -->
-                <div class="flex items-start sm:items-center gap-3.5">
-                    <div class="w-11 h-11 rounded-xl bg-white shadow-sm border border-slate-200/80 flex items-center justify-center text-teal-600 flex-shrink-0">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-navy-900 text-sm sm:text-base">4-Way Stretch</h3>
-                        <p class="text-xs sm:text-sm text-slate-600">360° ergonomic mobility</p>
-                    </div>
-                </div>
-
-                <!-- Feature 2 -->
-                <div class="flex items-start sm:items-center gap-3.5">
-                    <div class="w-11 h-11 rounded-xl bg-white shadow-sm border border-slate-200/80 flex items-center justify-center text-teal-600 flex-shrink-0">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-navy-900 text-sm sm:text-base">Fluid-Repellent</h3>
-                        <p class="text-xs sm:text-sm text-slate-600">Hydrophobic spill shield</p>
-                    </div>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="flex items-start sm:items-center gap-3.5">
-                    <div class="w-11 h-11 rounded-xl bg-white shadow-sm border border-slate-200/80 flex items-center justify-center text-sage-600 flex-shrink-0">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-navy-900 text-sm sm:text-base">Antimicrobial Finish</h3>
-                        <p class="text-xs sm:text-sm text-slate-600">Silver-ion odor & germ defense</p>
-                    </div>
-                </div>
-
-                <!-- Feature 4 -->
-                <div class="flex items-start sm:items-center gap-3.5">
-                    <div class="w-11 h-11 rounded-xl bg-white shadow-sm border border-slate-200/80 flex items-center justify-center text-navy-800 flex-shrink-0">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-navy-900 text-sm sm:text-base">Wrinkle-Resistant</h3>
-                        <p class="text-xs sm:text-sm text-slate-600">Crisp straight out of the dryer</p>
-                    </div>
-                </div>
-
-            </div>
+    <!-- Clinical Performance Trust Strip -->
+    <section class="trust-strip" aria-label="Garment Guarantees">
+      <div class="container trust-grid">
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M2 12h20"/>
+            </svg>
+          </div>
+          <div>
+            <h3>4-Way Stretch</h3>
+            <p>Unrestricted reach during procedures</p>
+          </div>
         </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+            </svg>
+          </div>
+          <div>
+            <h3>Fluid-Repellent</h3>
+            <p>Hydrophobic barrier protects skin</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/>
+            </svg>
+          </div>
+          <div>
+            <h3>Wrinkle-Resistant</h3>
+            <p>Zero ironing straight from the dryer</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+          </div>
+          <div>
+            <h3>Antimicrobial</h3>
+            <p>Silver-ion odor & bacteria defense</p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Best-Selling Scrubs Product Grid -->
-    <section id="bestsellers" class="py-16 sm:py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <!-- Section Header & Filter Tabs -->
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-                <div>
-                    <span class="text-teal-600 font-bold text-xs uppercase tracking-widest">Clinical Essentials</span>
-                    <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-navy-900 mt-1">Best-Selling Medical Apparel</h2>
-                    <p class="text-slate-600 mt-2 max-w-2xl text-sm sm:text-base">Designed with input from trauma surgeons and ICU nurses. Select your hospital-approved colorway below.</p>
-                </div>
-                
-                <!-- Category Filter Buttons -->
-                <div class="flex flex-wrap gap-2" id="category-filters">
-                    <button data-filter="all" class="filter-btn active px-4 py-2 rounded-lg text-sm font-semibold bg-navy-900 text-white transition-colors">All Essentials</button>
-                    <button data-filter="tops" class="filter-btn px-4 py-2 rounded-lg text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">Scrub Tops</button>
-                    <button data-filter="pants" class="filter-btn px-4 py-2 rounded-lg text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">Joggers & Pants</button>
-                    <button data-filter="outerwear" class="filter-btn px-4 py-2 rounded-lg text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">Coats & Jackets</button>
-                </div>
-            </div>
-
-            <!-- Products Grid (6 Items) -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid">
-
-                <!-- Product 1: Core V-Neck Scrub Top -->
-                <article class="product-card group bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col" data-category="tops">
-                    <div class="relative aspect-[4/4] bg-slate-100 overflow-hidden">
-                        <span class="absolute top-3 left-3 z-10 bg-navy-900 text-white text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md">Best Seller</span>
-                        <div class="product-tint-overlay absolute inset-0 bg-[#0F1E33] opacity-15 mix-blend-multiply transition-colors duration-300 pointer-events-none"></div>
-                        <img 
-                            src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80" 
-                            onerror="this.src='https://placehold.co/600x600/E2E8F0/0F1E33?text=Core+V-Neck+Top'" 
-                            alt="Apex 3-Pocket V-Neck Scrub Top" 
-                            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                        >
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between gap-2 mb-1">
-                                <span class="text-xs font-medium text-slate-500">3 Pockets • Tailored Fit</span>
-                                <div class="flex items-center text-xs font-semibold text-navy-900">
-                                    <span class="text-amber-400 mr-1">★</span> 4.9 <span class="text-slate-400 ml-1">(1,240)</span>
-                                </div>
-                            </div>
-                            <h3 class="font-display font-bold text-lg text-navy-900">Apex Core V-Neck Scrub Top</h3>
-                            <p class="text-teal-700 font-bold text-lg mt-1">$42.00</p>
-                            
-                            <!-- Swatches -->
-                            <div class="mt-4">
-                                <span class="text-xs text-slate-500 block mb-2">Color: <strong class="selected-color-name text-navy-900">Deep Navy</strong></span>
-                                <div class="flex items-center gap-2.5">
-                                    <button type="button" aria-label="Deep Navy" data-color="Deep Navy" data-hex="#0F1E33" class="swatch-btn w-6 h-6 rounded-full bg-[#0F1E33] ring-2 ring-offset-2 ring-navy-900 transition-all"></button>
-                                    <button type="button" aria-label="Ceil Blue" data-color="Ceil Blue" data-hex="#5B9BD5" class="swatch-btn w-6 h-6 rounded-full bg-[#5B9BD5] hover:scale-110 transition-all"></button>
-                                    <button type="button" aria-label="Sage Green" data-color="Sage Green" data-hex="#5C8374" class="swatch-btn w-6 h-6 rounded-full bg-[#5C8374] hover:scale-110 transition-all"></button>
-                                    <button type="button" aria-label="Obsidian Black" data-color="Obsidian Black" data-hex="#1E293B" class="swatch-btn w-6 h-6 rounded-full bg-[#1E293B] hover:scale-110 transition-all"></button>
-                                    <button type="button" aria-label="Clinical Burgundy" data-color="Clinical Burgundy" data-hex="#6B1D2F" class="swatch-btn w-6 h-6 rounded-full bg-[#6B1D2F] hover:scale-110 transition-all"></button>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="button" data-name="Apex Core V-Neck Scrub Top" data-price="42.00" class="add-to-bag-btn mt-6 w-full py-3 px-4 rounded-xl bg-navy-900 hover:bg-teal-600 text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2">
-                            <span>Add to Bag</span>
-                            <span class="text-white/60">•</span>
-                            <span>$42</span>
-                        </button>
-                    </div>
-                </article>
-
-                <!-- Product 2: Jogger Scrub Pants -->
-                <article class="product-card group bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col" data-category="pants">
-                    <div class="relative aspect-[4/4] bg-slate-100 overflow-hidden">
-                        <span class="absolute top-3 left-3 z-10 bg-sage-600 text-white text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md">Top Rated</span>
-                        <div class="product-tint-overlay absolute inset-0 bg-[#5C8374] opacity-15 mix-blend-multiply transition-colors duration-300 pointer-events-none"></div>
-                        <img 
-                            src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80" 
-                            onerror="this.src='https://placehold.co/600x600/E2E8F0/0F1E33?text=Kinetic+Jogger+Pants'" 
-                            alt="Kinetic 7-Pocket Jogger Scrub Pants" 
-                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                        >
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between gap-2 mb-1">
-                                <span class="text-xs font-medium text-slate-500">7 Pockets • Yoga Waistband</span>
-                                <div class="flex items-center text-xs font-semibold text-navy-900">
-                                    <span class="text-amber-400 mr-1">★</span> 4.9 <span class="text-slate-400 ml-1">(2,180)</span>
-                                </div>
-                            </div>
-                            <h3 class="font-display font-bold text-lg text-navy-900">Kinetic 7-Pocket Jogger Scrub Pants</h3>
-                            <p class="text-teal-700 font-bold text-lg mt-1">$54.00</p>
-                            
-                            <!-- Swatches -->
-                            <div class="mt-4">
-                                <span class="text-xs text-slate-500 block mb-2">Color: <strong class="selected-color-name text-navy-900">Sage Green</strong></span>
-                                <div class="flex items-center gap-2.5">
-                                    <button type="button" aria-label="Sage Green" data-color="Sage Green" data-hex="#5C8374" class="swatch-btn w-6 h-6 rounded-full bg-[#5C8374] ring-2 ring-offset-2 ring-navy-900 transition-all"></button>
-                                    <button type="button" aria-label="Deep Navy" data-color="Deep Navy" data-hex="#0F1E33" class="swatch-btn w-6 h-6 rounded-full bg-[#0F1E33] hover:scale-110 transition-all"></button>
-                                    <button type="button" aria-label="Ceil Blue" data-color="Ceil Blue" data-hex="#5B9BD5" class="swatch-btn w-6 h-6 rounded-full bg-[#5B9BD5] hover:scale-110 transition-all"></button>
-                                    <button type="button" aria-label="Obsidian Black" data-color="Obsidian Black" data-hex="#1E293B" class="swatch-btn w-6 h-6 rounded-full bg-[#1E293B] hover:scale-110 transition-all"></button>
-                                    <button type="button" aria-label="Clinical Burgundy" data-color="Clinical Burgundy" data-hex="#6B1D2F" class="swatch-btn w-6 h-6 rounded-full bg-[#6B1D2F] hover:scale-110 transition-all"></button>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="button" data-name="Kinetic 7-Pocket Jogger Scrub Pants" data-price="54.00" class="add-to-bag-btn mt-6 w-full py-3 px-4 rounded-xl bg-navy-900 hover:bg-teal-600 text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2">
-                            <span>Add to Bag</span>
-                            <span class="text-white/60">•</span>
-                            <span>$54</span>
-                        </button>
-                    </div>
-                </article>
-
-                <!-- Product 3: Tailored Clinical Lab Coat -->
-                <article class="product-card group bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col" data-category="outerwear">
-                    <div class="relative aspect-[4/4] bg-slate-100 overflow-hidden">
-                        <span class="absolute top-3 left-3 z-10 bg-teal-600 text-white text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md">Fluid-Shield</span>
-                        <div class="product-tint-overlay absolute inset-0 bg-transparent opacity-0 transition-colors duration-300 pointer-events-none"></div>
-                        <img 
-                            src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=800&q=80" 
-                            onerror="this.src='https://placehold.co/600x600/F8FAFC/0F1E33?text=Tailored+Lab+Coat'" 
-                            alt="Attending Tailored Lab Coat" 
-                            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                        >
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between gap-2 mb-1">
-                                <span class="text-xs font-medium text-slate-500">Tablet Pocket • Custom Embroidery</span>
-                                <div class="flex items-center text-xs font-semibold text-navy-900">
-                                    <span class="text-amber-400 mr-1">★</span> 5.0 <span class="text-slate-400 ml-1">(640)</span>
-                                </div>
-                            </div>
-                            <h3 class="font-display font-bold text-lg text-navy-900">Attending Tailored Lab Coat</h3>
-                            <p class="text-teal-700 font-bold text-lg mt-1">$98.00</p>
-                            
-                            <!-- Swatches -->
-                            <div class="mt-4">
-                                <span class="text-xs text-slate-500 block mb-2">Color: <strong class="selected-color-name text-navy-900">Crisp Clinical White</strong></span>
-                                <div class="flex items-center gap-2.5">
-                                    <button type="button" aria-label="Crisp Clinical White" data-color="Crisp Clinical White" data-hex="#FFFFFF" class="swatch-btn w-6 h-6 rounded-full bg-white border border-slate-300 ring-2 ring-offset-2 ring-navy-900 transition-all"></button>
-                                    <button type="button" aria-label="Deep Navy" data-color="Deep Navy" data-hex="#0F1E33" class="swatch-btn w-6 h-6 rounded-full bg-[#0F1E33] hover:scale-110 transition-all"></button>
-                                    <button type="button" aria-label="Obsidian Black" data-color="Obsidian Black" data-hex="#1E293B" class="swatch-btn w-6 h-6 rounded-full bg-[#1E293B] hover:scale-110 transition-all"></button>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="button" data-name="Attending Tailored Lab Coat" data-price="98.00" class="add-to-bag-btn mt-6 w-full py-3 px-4 rounded-xl bg-navy-900 hover:bg-teal-600 text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2">
-                            <span>Add to Bag</span>
-                            <span class="text-white/60">•</span>
-                            <span>$98</span>
-                        </button>
-                    </div>
-                </article>
-
-                <!-- Product 4: Performance Zip Scrub Jacket -->
-                <article class="product-card group bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col" data-category="outerwear">
-                    <div class="relative aspect-[4/4] bg-slate-100 overflow-hidden">
-                        <div class="product-tint-overlay absolute inset-0 bg-[#1E293B] opacity-15 mix-blend-multiply transition-colors duration-300 pointer-events-none"></div>
-                        <img 
-                            src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80" 
-                            onerror="this.src='https://placehold.co/600x600/E2E8F0/0F1E33?text=Thermal+Zip+Jacket'" 
-                            alt="On-Call Performance Zip Jacket" 
-                            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                        >
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between gap-2 mb-1">
-                                <span class="text-xs font-medium text-slate-500">5 Zip Pockets • Ribbed Cuffs</span>
-                                <div class="flex items-center text-xs font-semibold text-navy-900">
-                                    <span class="text-amber-400 mr-1">★</span> 4.8 <span class="text-slate-400 ml-1">(890)</span>
-                                </div>
-                            </div>
-                            <h3 class="font-display font-bold text-lg text-navy-900">On-Call Performance Zip Jacket</h3>
-                            <p class="text-teal-700 font-bold text-lg mt-1">$68.00</p>
-                            
-                            <!-- Swatches -->
-                            <div class="mt-4">
-                                <span class="text-xs text-slate-500 block mb-2">Color: <strong class="selected-color-name text-navy-900">Obsidian Black</strong></span>
-                                <div class="flex items-center gap-2.5">
-                                    <button type="button" aria-label="Obsidian Black" data-color="Obsidian Black" data-hex="#1E293B" class="swatch-btn w-6 h-6 rounded-full bg-[#1E293B] ring-2 ring-offset-2 ring-navy-900 transition-all"></button>
-                                    <button type="button" aria-label="Deep Navy" data-color="Deep Navy" data-hex="#0F1E33" class="swatch-btn w-6 h-6 rounded-full bg-[#0F1E33] hover:scale-110 transition-all"></button>
-                                    <button type="button" aria-label="Sage Green" data-color="Sage Green" data-hex="#5C8374" class="swatch-btn w-6 h-6 rounded-full bg-[#5C8374] hover:scale-110 transition-all"></button>
-                                    <button type="button" aria-label="Clinical Burgundy" data-color="Clinical Burgundy" data-hex="#6B1D2F" class="swatch-btn w-6 h-6 rounded-full bg-[#6B1D2F] hover:scale-110 transition-all"></button>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="button" data-name="On-Call Performance Zip Jacket" data-price="68.00" class="add-to-bag-btn mt-6 w-full py-3 px-4 rounded-xl bg-navy-900 hover:bg-teal-600 text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2">
-                            <span>Add to Bag</span>
-                            <span class="text-white/60">•</span>
-                            <span>$68</span>
-                        </button>
-                    </div>
-                </article>
-
-                <!-- Product 5: Surgical Mandarin Collar Top -->
-                <article class="product-card group bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col" data-category="tops">
-                    <div class="relative aspect-[4/4] bg-slate-100 overflow-hidden">
-                        <span class="absolute top-3 left-3 z-10 bg-navy-800 text-white text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md">New Arrival</span>
-                        <div class="product-tint-overlay absolute inset-0 bg-[#5B9BD5] opacity-15 mix-blend-multiply transition-colors duration-300 pointer-events-none"></div>
-                        <img 
-                            src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=800&q=80" 
-                            onerror="this.src='https://placehold.co/600x600/E2E8F0/0F1E33?text=Mandarin+Collar+Top'" 
-                            alt="Surgeon Mandarin Collar Scrub Top" 
-                            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                        >
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between gap-2 mb-1">
-                                <span class="text-xs font-medium text-slate-500">Zip Chest Pocket • Badge Loop</span>
-                                <div class="flex items-center text-xs font-semibold text-navy-900">
-                                    <span class="text-amber-400 mr-1">★</span> 4.9 <span class="text-slate-400 ml-1">(415)</span>
-                                </div>
-                            </div>
-                            <h3 class="font-display font-bold text-lg text-navy-900">Surgeon Mandarin Collar Top</h3>
-                            <p class="text-teal-700 font-bold text-lg mt-1">$46.00</p>
-                            
-                            <!-- Swatches -->
-                            <div class="mt-4">
-                                <span class="text-xs text-slate-500 block mb-2">Color: <strong class="selected-color-name text-navy-900">Ceil Blue</strong></span>
-                                <div class="flex items-center gap-2.5">
-                                    <button type="button" aria-label="Ceil Blue" data-color="Ceil Blue" data-hex="#5B9BD5" class="swatch-btn w-6 h-6 rounded-full bg-[#5B9BD5] ring-2 ring-offset-2 ring-navy-900 transition-all"></button>
-                                    <button type="button" aria-label="Deep Navy" data-color="Deep Navy" data-hex="#0F1E33" class="swatch-btn w-6 h-6 rounded-full bg-[#0F1E33] hover:scale-110 transition-all"></button>
-                                    <button type="button" aria-label="Sage Green" data-color="Sage Green" data-hex="#5C8374" class="swatch-btn w-6 h-6 rounded-full bg-[#5C8374] hover:scale-110 transition-all"></button>
-                                    <button type="button" aria-label="Clinical Burgundy" data-color="Clinical Burgundy" data-hex="#6B1D2F" class="swatch-btn w-6 h-6 rounded-full bg-[#6B1D2F] hover:scale-110 transition-all"></button>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="button" data-name="Surgeon Mandarin Collar Top" data-price="46.00" class="add-to-bag-btn mt-6 w-full py-3 px-4 rounded-xl bg-navy-900 hover:bg-teal-600 text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2">
-                            <span>Add to Bag</span>
-                            <span class="text-white/60">•</span>
-                            <span>$46</span>
-                        </button>
-                    </div>
-                </article>
-
-                <!-- Product 6: Straight-Leg Cargo Scrub Pants -->
-                <article class="product-card group bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col" data-category="pants">
-                    <div class="relative aspect-[4/4] bg-slate-100 overflow-hidden">
-                        <div class="product-tint-overlay absolute inset-0 bg-[#6B1D2F] opacity-15 mix-blend-multiply transition-colors duration-300 pointer-events-none"></div>
-                        <img 
-                            src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=800&q=80" 
-                            onerror="this.src='https://placehold.co/600x600/E2E8F0/0F1E33?text=Cargo+Scrub+Pants'" 
-                            alt="Trauma 9-Pocket Straight Cargo Pants" 
-                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                        >
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between gap-2 mb-1">
-                                <span class="text-xs font-medium text-slate-500">9 Utility Pockets • Reinforced Seams</span>
-                                <div class="flex items-center text-xs font-semibold text-navy-900">
-                                    <span class="text-amber-400 mr-1">★</span> 4.8 <span class="text-slate-400 ml-1">(730)</span>
-                                </div>
-                            </div>
-                            <h3 class="font-display font-bold text-lg text-navy-900">Trauma 9-Pocket Straight Cargo Pants</h3>
-                            <p class="text-teal-700 font-bold text-lg mt-1">$56.00</p>
-                            
-                            <!-- Swatches -->
-                            <div class="mt-4">
-                                <span class="text-xs text-slate-500 block mb-2">Color: <strong class="selected-color-name text-navy-900">Clinical Burgundy</strong></span>
-                                <div class="flex items-center gap-2.5">
-                                    <button type="button" aria-label="Clinical Burgundy" data-color="Clinical Burgundy" data-hex="#6B1D2F" class="swatch-btn w-6 h-6 rounded-full bg-[#6B1D2F] ring-2 ring-offset-2 ring-navy-900 transition-all"></button>
-                                    <button type="button" aria-label="Deep Navy" data-color="Deep Navy" data-hex="#0F1E33" class="swatch-btn w-6 h-6 rounded-full bg-[#0F1E33] hover:scale-110 transition-all"></button>
-                                    <button type="button" aria-label="Ceil Blue" data-color="Ceil Blue" data-hex="#5B9BD5" class="swatch-btn w-6 h-6 rounded-full bg-[#5B9BD5] hover:scale-110 transition-all"></button>
-                                    <button type="button" aria-label="Sage Green" data-color="Sage Green" data-hex="#5C8374" class="swatch-btn w-6 h-6 rounded-full bg-[#5C8374] hover:scale-110 transition-all"></button>
-                                    <button type="button" aria-label="Obsidian Black" data-color="Obsidian Black" data-hex="#1E293B" class="swatch-btn w-6 h-6 rounded-full bg-[#1E293B] hover:scale-110 transition-all"></button>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="button" data-name="Trauma 9-Pocket Straight Cargo Pants" data-price="56.00" class="add-to-bag-btn mt-6 w-full py-3 px-4 rounded-xl bg-navy-900 hover:bg-teal-600 text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2">
-                            <span>Add to Bag</span>
-                            <span class="text-white/60">•</span>
-                            <span>$56</span>
-                        </button>
-                    </div>
-                </article>
-
-            </div>
+    <!-- Featured Categories -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">Shop By Silhouette</span>
+            <h2>Clinical Essentials</h2>
+          </div>
+          <p>Modular tops, ergonomic joggers, and structured outer layers built to mix seamlessly across shifts.</p>
         </div>
+
+        <div class="category-grid">
+          <a href="#bestsellers" class="category-card navy-tint" data-filter-link="tops">
+            <div class="category-art">
+              <svg width="110" height="120" viewBox="0 0 120 130" fill="none">
+                <path d="M36 16L14 30L4 64L24 70L30 48V114H90V48L96 70L116 64L106 30L84 16C75 24 68 28 60 28C52 28 45 24 36 16Z" fill="#0F1E33"/>
+                <path d="M45 19L60 44L75 19" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="category-meta">
+              <div>
+                <h3>Scrub Tops</h3>
+                <span>V-Neck & Mock Wrap</span>
+              </div>
+              <span class="arrow-circle">→</span>
+            </div>
+          </a>
+
+          <a href="#bestsellers" class="category-card sage-tint" data-filter-link="pants">
+            <div class="category-art">
+              <svg width="110" height="120" viewBox="0 0 120 130" fill="none">
+                <path d="M32 14H88L94 116H70L60 54L50 116H26L32 14Z" fill="#4A6D60"/>
+                <rect x="28" y="48" width="12" height="24" rx="2" fill="#375449"/>
+                <rect x="80" y="48" width="12" height="24" rx="2" fill="#375449"/>
+              </svg>
+            </div>
+            <div class="category-meta">
+              <div>
+                <h3>Scrub Pants</h3>
+                <span>Joggers & Straight-Leg</span>
+              </div>
+              <span class="arrow-circle">→</span>
+            </div>
+          </a>
+
+          <a href="#bestsellers" class="category-card slate-tint" data-filter-link="outerwear">
+            <div class="category-art">
+              <svg width="110" height="120" viewBox="0 0 120 130" fill="none">
+                <path d="M34 14L14 26L6 86H24L30 46V118H90V46L96 86H114L106 26L86 14L60 36L34 14Z" fill="#FFFFFF" stroke="#0F1E33" stroke-width="2.5"/>
+                <line x1="60" y1="36" x2="60" y2="118" stroke="#0F1E33" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="category-meta">
+              <div>
+                <h3>Lab Coats</h3>
+                <span>Consultation & Attending</span>
+              </div>
+              <span class="arrow-circle">→</span>
+            </div>
+          </a>
+
+          <a href="#bestsellers" class="category-card teal-tint" data-filter-link="outerwear">
+            <div class="category-art">
+              <svg width="110" height="120" viewBox="0 0 120 130" fill="none">
+                <path d="M34 16L12 28L6 86H24L30 48V114H90V48L96 86H114L108 28L86 16H34Z" fill="#0D8A9E"/>
+                <line x1="60" y1="16" x2="60" y2="114" stroke="#FFFFFF" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="category-meta">
+              <div>
+                <h3>Warm-Up Jackets</h3>
+                <span>Micro-Fleece & Knit Cuff</span>
+              </div>
+              <span class="arrow-circle">→</span>
+            </div>
+          </a>
+        </div>
+      </div>
     </section>
 
-    <!-- Fabric Technology Spotlight Section -->
-    <section id="fabric-tech" class="py-16 sm:py-24 bg-navy-950 text-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Left Interactive Layer Diagram -->
-                <div class="lg:col-span-6 space-y-4">
-                    <div class="bg-navy-900/90 border border-teal-500/30 rounded-2xl p-6 sm:p-8 shadow-2xl">
-                        <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
-                            <div>
-                                <span class="text-xs font-bold uppercase tracking-widest text-teal-400">Micro-Architecture</span>
-                                <h3 class="font-display text-xl font-bold text-white mt-0.5">VitalWeave™ Tri-Layer Matrix</h3>
-                            </div>
-                            <span class="px-3 py-1 rounded-full bg-teal-600/20 text-teal-300 text-xs font-semibold border border-teal-500/30">72% Poly / 21% Rayon / 7% Spandex</span>
-                        </div>
+    <!-- Bestsellers Product Grid -->
+    <section class="section-padding bestsellers-section" id="bestsellers">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">Clinician Favorites</span>
+            <h2>Bestselling Medical Apparel</h2>
+          </div>
 
-                        <!-- Layer 1 -->
-                        <div class="p-4 rounded-xl bg-navy-800/80 border-l-4 border-teal-400 mb-4">
-                            <div class="flex justify-between items-center mb-1">
-                                <span class="font-bold text-sm text-white">01. Outer Hydro-Shield Barrier</span>
-                                <span class="text-xs text-teal-400 font-mono">DWR-C0</span>
-                            </div>
-                            <p class="text-xs sm:text-sm text-slate-300">Repels fluids, betadine, and coffee splashes on contact without compromising breathability.</p>
-                        </div>
-
-                        <!-- Layer 2 -->
-                        <div class="p-4 rounded-xl bg-navy-800/80 border-l-4 border-sage-500 mb-4">
-                            <div class="flex justify-between items-center mb-1">
-                                <span class="font-bold text-sm text-white">02. Silvadur™ Antimicrobial Core</span>
-                                <span class="text-xs text-sage-100 font-mono">AG+ IONS</span>
-                            </div>
-                            <p class="text-xs sm:text-sm text-slate-300">Bonded silver ions inhibit 99.9% of odor-causing bacteria across 100+ industrial wash cycles.</p>
-                        </div>
-
-                        <!-- Layer 3 -->
-                        <div class="p-4 rounded-xl bg-navy-800/80 border-l-4 border-sky-400">
-                            <div class="flex justify-between items-center mb-1">
-                                <span class="font-bold text-sm text-white">03. Brushed Micro-Air Interior</span>
-                                <span class="text-xs text-sky-300 font-mono">4-WAY FLEX</span>
-                            </div>
-                            <p class="text-xs sm:text-sm text-slate-300">Ultra-soft rayon interior channels heat away from skin during high-acuity procedures.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Engineering Story -->
-                <div class="lg:col-span-6 space-y-6">
-                    <span class="text-teal-400 font-bold text-xs uppercase tracking-widest">Textile Science</span>
-                    <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
-                        Built Like Technical Gear. Tailored Like Bespoke Apparel.
-                    </h2>
-                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
-                        Traditional cotton-poly scrubs trap heat, crease within an hour, and lose shape after repeated hospital laundering. We spent 18 months testing 40+ yarn blends with emergency medicine physicians to create VitalWeave™.
-                    </p>
-                    
-                    <!-- Key Metrics -->
-                    <div class="grid grid-cols-3 gap-4 pt-4 border-t border-white/15">
-                        <div>
-                            <div class="font-display text-2xl sm:text-3xl font-extrabold text-teal-400">3.2x</div>
-                            <div class="text-xs sm:text-sm text-slate-400 mt-1">Faster moisture evaporation</div>
-                        </div>
-                        <div>
-                            <div class="font-display text-2xl sm:text-3xl font-extrabold text-teal-400">100+</div>
-                            <div class="text-xs sm:text-sm text-slate-400 mt-1">Zero-fade wash durability</div>
-                        </div>
-                        <div>
-                            <div class="font-display text-2xl sm:text-3xl font-extrabold text-teal-400">360°</div>
-                            <div class="text-xs sm:text-sm text-slate-400 mt-1">Recovery stretch memory</div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+          <div class="filter-tabs" role="tablist" aria-label="Filter Products">
+            <button class="filter-btn active" data-filter="all">All Styles</button>
+            <button class="filter-btn" data-filter="tops">Scrub Tops</button>
+            <button class="filter-btn" data-filter="pants">Scrub Pants</button>
+            <button class="filter-btn" data-filter="outerwear">Outerwear & Coats</button>
+          </div>
         </div>
+
+        <div class="product-grid" id="productGrid">
+          <!-- Products rendered dynamically via JS -->
+        </div>
+      </div>
     </section>
 
-    <!-- Healthcare Professional Testimonials -->
-    <section class="py-16 sm:py-24 bg-slate-50 border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-14">
-                <span class="text-teal-600 font-bold text-xs uppercase tracking-widest">Field-Tested Reviews</span>
-                <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-navy-900 mt-1">Worn on the Frontlines</h2>
-                <p class="text-slate-600 mt-2 text-sm sm:text-base">Verified feedback from clinicians putting Vitalis Scrubs through back-to-back shifts.</p>
+    <!-- VitalWeave Fabric Technology Spotlight -->
+    <section class="section-padding tech-section" id="fabric-tech">
+      <div class="container tech-grid">
+        <div class="tech-visual">
+          <div style="margin-bottom:1.5rem;">
+            <span class="eyebrow" style="color:#7DD3FC;">Proprietary Textile Engineering</span>
+            <h3 style="font-size:1.55rem;">Inside the Tri-Layer VitalWeave™</h3>
+          </div>
+          <div class="weave-diagram">
+            <div class="weave-layer">
+              <div>
+                <strong>01. Outer Hydro-Shield Surface</strong>
+                <span>Repels blood, betadine, and coffee on contact</span>
+              </div>
+              <span class="weave-badge">Fluid Guard</span>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <!-- Testimonial 1: ER Nurse -->
-                <div class="bg-white rounded-2xl p-7 border border-slate-200 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="text-amber-400 text-sm tracking-wider">★★★★★</div>
-                            <span class="text-[11px] font-semibold text-teal-700 bg-teal-50 px-2.5 py-1 rounded-full">Verified Clinician</span>
-                        </div>
-                        <p class="text-slate-700 text-sm sm:text-base leading-relaxed italic">
-                            "In the Level 1 Trauma bay, I don't have time to think about my uniform. The Kinetic Joggers stay put during compressions, hold my trauma shears securely, and fluids literally bead right off."
-                        </p>
-                    </div>
-                    <div class="flex items-center gap-3.5 mt-6 pt-5 border-t border-slate-100">
-                        <div class="w-11 h-11 rounded-full bg-navy-900 text-white font-display font-bold flex items-center justify-center text-sm">
-                            MR
-                        </div>
-                        <div>
-                            <div class="font-bold text-navy-900 text-sm">Maya Rodriguez, BSN, RN, CEN</div>
-                            <div class="text-xs text-slate-500">Emergency Department Charge Nurse • Chicago, IL</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 2: Pediatric Surgeon -->
-                <div class="bg-white rounded-2xl p-7 border border-slate-200 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="text-amber-400 text-sm tracking-wider">★★★★★</div>
-                            <span class="text-[11px] font-semibold text-teal-700 bg-teal-50 px-2.5 py-1 rounded-full">Verified Clinician</span>
-                        </div>
-                        <p class="text-slate-700 text-sm sm:text-base leading-relaxed italic">
-                            "Going from cold OR suites to warm inpatient rounds used to mean constant discomfort. The Mandarin Collar Top regulates temperature remarkably well, and the Attending Lab Coat has an unmatched tailored drape."
-                        </p>
-                    </div>
-                    <div class="flex items-center gap-3.5 mt-6 pt-5 border-t border-slate-100">
-                        <div class="w-11 h-11 rounded-full bg-sage-600 text-white font-display font-bold flex items-center justify-center text-sm">
-                            DK
-                        </div>
-                        <div>
-                            <div class="font-bold text-navy-900 text-sm">Dr. David Kim, MD, FACS</div>
-                            <div class="text-xs text-slate-500">Pediatric Surgeon • Boston, MA</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 3: Resident -->
-                <div class="bg-white rounded-2xl p-7 border border-slate-200 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="text-amber-400 text-sm tracking-wider">★★★★★</div>
-                            <span class="text-[11px] font-semibold text-teal-700 bg-teal-50 px-2.5 py-1 rounded-full">Verified Clinician</span>
-                        </div>
-                        <p class="text-slate-700 text-sm sm:text-base leading-relaxed italic">
-                            "During 28-hour ICU call shifts, comfort is non-negotiable. Vitalis scrubs feel like athletic wear, never wrinkle when I catch 45 minutes of sleep, and still look crisp for morning attending rounds."
-                        </p>
-                    </div>
-                    <div class="flex items-center gap-3.5 mt-6 pt-5 border-t border-slate-100">
-                        <div class="w-11 h-11 rounded-full bg-teal-700 text-white font-display font-bold flex items-center justify-center text-sm">
-                            AP
-                        </div>
-                        <div>
-                            <div class="font-bold text-navy-900 text-sm">Dr. Ananya Patel, DO</div>
-                            <div class="text-xs text-slate-500">PGY-3 Internal Medicine Resident • New York, NY</div>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="weave-layer">
+              <div>
+                <strong>02. Elastane Core Matrix</strong>
+                <span>360° high-recovery stretch that never bags at the knees</span>
+              </div>
+              <span class="weave-badge">4-Way Flex</span>
             </div>
+            <div class="weave-layer">
+              <div>
+                <strong>03. Silver-Ion Micro-Channel Lining</strong>
+                <span>Wicks heat during traumas and neutralizes odor</span>
+              </div>
+              <span class="weave-badge">Thermoregulating</span>
+            </div>
+          </div>
         </div>
+
+        <div>
+          <span class="eyebrow" style="color:#6EE7B7;">Built For Real Medicine</span>
+          <h2 style="font-size:clamp(1.85rem, 3vw, 2.5rem); margin-bottom:1rem;">
+            Designed around how clinicians actually move.
+          </h2>
+          <p style="color:var(--slate-300); font-size:1.05rem;">
+            Standard hospital scrubs are boxy, stiff, and trap heat. We mapped 42 pressure points across surgical, ICU, and outpatient workflows to build garments that feel like athletic wear and look tailored on rounds.
+          </p>
+
+          <div class="tech-list">
+            <div class="tech-feature">
+              <h3>
+                <span style="color:#6EE7B7;">✓</span> Stethoscope-Safe Pockets
+              </h3>
+              <p>Reinforced gusseted cargo pockets keep trauma shears, pagers, and iPads secure without sagging.</p>
+            </div>
+            <div class="tech-feature">
+              <h3>
+                <span style="color:#6EE7B7;">✓</span> Industrial Wash Tested
+              </h3>
+              <p>Tested through 150+ high-heat wash cycles with zero color fade or seam distortion.</p>
+            </div>
+            <div class="tech-feature">
+              <h3>
+                <span style="color:#6EE7B7;">✓</span> Reinforced ID Loops
+              </h3>
+              <p>Bar-tacked shoulder and chest loops hold heavy retractable hospital badges cleanly.</p>
+            </div>
+            <div class="tech-feature">
+              <h3>
+                <span style="color:#6EE7B7;">✓</span> Zero-Chafe Flatlock Seams
+              </h3>
+              <p>Smooth interior stitching prevents irritation under lead aprons and isolation gowns.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Hospital Group & Bulk Ordering Banner -->
-    <section id="bulk-orders" class="py-14 bg-sage-100/80 border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-2xl p-8 sm:p-10 border border-slate-200 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-8">
-                <div class="space-y-2 text-center lg:text-left max-w-2xl">
-                    <span class="text-xs font-bold uppercase tracking-widest text-sage-600">Enterprise & Practice Outfitting</span>
-                    <h3 class="font-display text-2xl sm:text-3xl font-extrabold text-navy-900">Outfitting a Clinic, Residency Program, or Hospital System?</h3>
-                    <p class="text-slate-600 text-sm sm:text-base">Receive up to 30% tiered volume pricing, custom department color-coding, and precision chest embroidery with dedicated account management.</p>
-                </div>
-                <div class="flex-shrink-0 w-full sm:w-auto">
-                    <a href="#footer-contact" class="block w-full sm:w-auto text-center px-7 py-4 rounded-xl bg-navy-900 hover:bg-navy-800 text-white font-semibold text-sm transition-colors shadow-md">
-                        Request Group Quote
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Clean Footer -->
-    <footer id="footer-contact" class="bg-navy-950 text-slate-300 pt-16 pb-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
-                
-                <!-- Brand Column -->
-                <div class="lg:col-span-4 space-y-4">
-                    <a href="#" class="flex items-center gap-2.5">
-                        <div class="w-8 h-8 rounded-lg bg-teal-600 flex items-center justify-center text-white">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>
-                            </svg>
-                        </div>
-                        <span class="font-display font-extrabold text-xl tracking-tight text-white">VITALIS SCRUBS</span>
-                    </a>
-                    <p class="text-sm text-slate-400 leading-relaxed max-w-sm">
-                        Engineered medical apparel built for durability, fluid protection, and unrestricted movement during demanding clinical shifts.
-                    </p>
-                    <div class="text-xs text-slate-400 pt-1">
-                        FSA / HSA Eligible Medical Apparel
-                    </div>
-                </div>
-
-                <!-- Sizing & Fit Guide Links -->
-                <div class="lg:col-span-2 space-y-3">
-                    <h4 class="font-display font-bold text-white text-sm uppercase tracking-wider">Fit & Sizing</h4>
-                    <ul class="space-y-2.5 text-sm">
-                        <li><a href="#bestsellers" class="hover:text-teal-400 transition-colors">Women's Sizing Guide</a></li>
-                        <li><a href="#bestsellers" class="hover:text-teal-400 transition-colors">Men's Sizing Guide</a></li>
-                        <li><a href="#bestsellers" class="hover:text-teal-400 transition-colors">Petite & Tall Inseams</a></li>
-                        <li><a href="#fabric-tech" class="hover:text-teal-400 transition-colors">Fabric Care & Wash</a></li>
-                    </ul>
-                </div>
-
-                <!-- Hospital & Institutional Orders -->
-                <div class="lg:col-span-3 space-y-3">
-                    <h4 class="font-display font-bold text-white text-sm uppercase tracking-wider">Hospital & Groups</h4>
-                    <ul class="space-y-2.5 text-sm">
-                        <li><a href="#bulk-orders" class="hover:text-teal-400 transition-colors">Hospital Group Ordering</a></li>
-                        <li><a href="#bulk-orders" class="hover:text-teal-400 transition-colors">Custom Logo & Name Embroidery</a></li>
-                        <li><a href="#bulk-orders" class="hover:text-teal-400 transition-colors">Medical & Nursing Student 20% Off</a></li>
-                        <li><a href="#bulk-orders" class="hover:text-teal-400 transition-colors">30-Day Shift Trial Guarantee</a></li>
-                    </ul>
-                </div>
-
-                <!-- Newsletter Signup -->
-                <div class="lg:col-span-3 space-y-3">
-                    <h4 class="font-display font-bold text-white text-sm uppercase tracking-wider">Join the Rounds</h4>
-                    <p class="text-sm text-slate-400">Get 15% off your first scrub set plus early access to limited hospital color drops.</p>
-                    <form id="newsletter-form" class="space-y-2.5 pt-1">
-                        <input 
-                            type="email" 
-                            required 
-                            placeholder="Enter your clinical or personal email" 
-                            class="w-full px-4 py-3 rounded-xl bg-navy-900 border border-white/15 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-teal-500"
-                        >
-                        <button type="submit" class="w-full py-3 px-4 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-semibold text-sm transition-colors">
-                            Unlock 15% Off
-                        </button>
-                    </form>
-                    <p id="newsletter-feedback" class="hidden text-xs text-teal-400 font-medium">Thank you! Check your inbox for code VITALIS15.</p>
-                </div>
-
-            </div>
-
-            <!-- Copyright & Legal -->
-            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-                <p>&copy; 2026 Vitalis Medical Apparel Inc. All rights reserved.</p>
-                <div class="flex items-center gap-6">
-                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-                    <a href="#" class="hover:text-white transition-colors">Accessibility</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Slide-Over Shopping Bag Drawer -->
-    <div id="cart-drawer-backdrop" class="fixed inset-0 bg-navy-950/60 backdrop-blur-xs z-50 hidden transition-opacity"></div>
-    <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
-        <!-- Drawer Header -->
-        <div class="px-6 py-5 border-b border-slate-200 flex items-center justify-between bg-slate-50">
-            <div class="flex items-center gap-2">
-                <h2 class="font-display font-bold text-lg text-navy-900">Your Shift Bag</h2>
-                <span id="drawer-count" class="text-xs font-bold bg-teal-100 text-teal-700 px-2.5 py-0.5 rounded-full">2 items</span>
-            </div>
-            <button id="close-cart-btn" class="p-2 rounded-lg text-slate-500 hover:text-navy-900 hover:bg-slate-200/70 transition-colors" aria-label="Close bag">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-            </button>
+    <!-- Clinician Social Proof & Group Orders -->
+    <section class="section-padding" id="group-orders">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">Verified Clinician Reviews</span>
+            <h2>Trusted on the Frontlines</h2>
+          </div>
+          <p>4.9 / 5.0 average rating across 6,400+ verified doctors, nurse practitioners, and residents.</p>
         </div>
 
-        <!-- Free Shipping Progress -->
-        <div class="px-6 py-3 bg-teal-50 border-b border-teal-100 text-xs text-teal-800 font-medium">
-            <span id="shipping-msg">You've unlocked <strong>FREE Express Hospital Shipping!</strong></span>
-        </div>
-
-        <!-- Cart Items List -->
-        <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-4">
-            <!-- Populated via JS -->
-        </div>
-
-        <!-- Drawer Footer -->
-        <div class="p-6 border-t border-slate-200 bg-slate-50 space-y-4">
-            <div class="flex items-center justify-between text-sm">
-                <span class="text-slate-600">Subtotal</span>
-                <span id="cart-subtotal" class="font-display font-extrabold text-xl text-navy-900">$96.00</span>
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div>
+              <div class="stars">★★★★★</div>
+              <p class="review-quote">
+                "Between 24-hour trauma call and clinic days, these are the only scrubs that still look crisp at 6 AM. The cargo pocket fits my trauma shears and phone without pulling my waistband down."
+              </p>
             </div>
-            <button id="checkout-btn" type="button" class="w-full py-3.5 px-6 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-semibold text-sm shadow-md transition-colors">
-                Proceed to Checkout
-            </button>
-            <p id="checkout-toast" class="hidden text-center text-xs font-semibold text-sage-600">
-                Order preview ready! Redirecting to secure clinical checkout...
+            <div class="reviewer">
+              <div class="reviewer-avatar">EM</div>
+              <div>
+                <strong>Dr. Elena Morales, MD</strong>
+                <span>Emergency Medicine Attending • Chicago, IL</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div>
+              <div class="stars">★★★★★</div>
+              <p class="review-quote">
+                "The fluid-repellent finish saved me twice this week during central line placements. Spills bead right off, and the sage green color holds up after dozens of washes."
+              </p>
+            </div>
+            <div class="reviewer">
+              <div class="reviewer-avatar" style="background-color:var(--sage-600);">DC</div>
+              <div>
+                <strong>David Chen, DNP, APRN</strong>
+                <span>Cardiothoracic ICU • Boston, MA</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div>
+              <div class="stars">★★★★★</div>
+              <p class="review-quote">
+                "We outfitted our entire 28-person orthopedic residency class with custom embroidered Vitalis tops and lab coats. Best fit and breathability we've ever worn in the OR."
+              </p>
+            </div>
+            <div class="reviewer">
+              <div class="reviewer-avatar" style="background-color:var(--teal-600);">SP</div>
+              <div>
+                <strong>Dr. Sonia Patel, DO</strong>
+                <span>Chief Orthopedic Resident • Seattle, WA</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Hospital & Clinic Bulk Ordering CTA -->
+        <div class="group-banner">
+          <div>
+            <span class="eyebrow">Outfitting Teams & Residency Programs</span>
+            <h3>Custom Embroidery & Group Orders</h3>
+            <p>
+              Equip your clinic, dental practice, or hospital department with custom crest and name embroidery. Enjoy up to 25% volume pricing and dedicated sizing kits for teams of 10 or more.
             </p>
+          </div>
+          <button class="btn btn-primary" id="groupQuoteBtn">Request Team Quote</button>
         </div>
-    </aside>
+      </div>
+    </section>
+  </main>
 
-    <!-- Minimal Vanilla JS for Interactive Swatches, Filtering, Mobile Menu, & Cart Drawer -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // 1. Mobile Menu & Search Bar Toggles
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const searchBtn = document.getElementById('search-btn');
-            const searchBar = document.getElementById('search-bar');
-            const closeSearch = document.getElementById('close-search');
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="brand-logo">
+            <span class="brand-mark">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </span>
+            VITALIS
+          </a>
+          <p>
+            Precision-tailored medical apparel designed for doctors, nurses, and healthcare teams who demand all-shift comfort and clinical durability.
+          </p>
+        </div>
 
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="#bestsellers">Scrub Tops</a></li>
+            <li><a href="#bestsellers">Scrub Joggers & Pants</a></li>
+            <li><a href="#bestsellers">Consultation Lab Coats</a></li>
+            <li><a href="#bestsellers">Warm-Up Jackets</a></li>
+            <li><a href="#group-orders">Custom Embroidery</a></li>
+          </ul>
+        </div>
 
-            document.querySelectorAll('.mobile-link').forEach(link => {
-                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-            });
+        <div class="footer-col">
+          <h4>Clinician Support</h4>
+          <ul>
+            <li><a href="#fabric-tech">Size & Fit Guide</a></li>
+            <li><a href="#group-orders">Hospital & Residency Orders</a></li>
+            <li><a href="#fabric-tech">Fabric Care Instructions</a></li>
+            <li><a href="#bestsellers">Free 30-Day Returns</a></li>
+          </ul>
+        </div>
 
-            searchBtn.addEventListener('click', () => {
-                searchBar.classList.toggle('hidden');
-                if (!searchBar.classList.contains('hidden')) {
-                    searchBar.querySelector('input').focus();
-                }
-            });
+        <div class="footer-col">
+          <h4>Medical Community</h4>
+          <p style="font-size:0.86rem;">Join 40,000+ clinicians for early access to limited color drops and residency discounts.</p>
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="email" placeholder="dr.name@hospital.org" required aria-label="Email address">
+            <button type="submit" class="btn btn-teal" style="padding:0.65rem 1rem;">Join</button>
+          </form>
+        </div>
+      </div>
 
-            closeSearch.addEventListener('click', () => {
-                searchBar.classList.add('hidden');
-            });
+      <div class="footer-bottom">
+        <span>© 2026 Vitalis Medical Apparel Inc. All rights reserved.</span>
+        <span>HIPAA-Compliant Team Billing &bull; HSA / FSA Eligible</span>
+      </div>
+    </div>
+  </footer>
 
-            // 2. Interactive Color Swatch Selectors
-            document.querySelectorAll('.product-card').forEach(card => {
-                const swatches = card.querySelectorAll('.swatch-btn');
-                const colorLabel = card.querySelector('.selected-color-name');
-                const tintOverlay = card.querySelector('.product-tint-overlay');
+  <!-- Slide-Over Cart & FormSubmit.co Checkout Drawer -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Bag">
+    <div class="drawer-header">
+      <h3 id="drawerTitle">Your Shift Bag</h3>
+      <button class="icon-btn" id="closeCartBtn" aria-label="Close Bag">✕</button>
+    </div>
 
-                swatches.forEach(swatch => {
-                    swatch.addEventListener('click', () => {
-                        // Reset ring styling on sibling swatches
-                        swatches.forEach(s => s.classList.remove('ring-2', 'ring-offset-2', 'ring-navy-900'));
-                        swatch.classList.add('ring-2', 'ring-offset-2', 'ring-navy-900');
+    <div class="shipping-meter">
+      <div id="shippingText">Add $100.00 for FREE Express Shipping</div>
+      <div class="progress-track">
+        <div class="progress-fill" id="shippingProgress"></div>
+      </div>
+    </div>
 
-                        // Update displayed color name
-                        const colorName = swatch.getAttribute('data-color');
-                        const hex = swatch.getAttribute('data-hex');
-                        colorLabel.textContent = colorName;
+    <div class="drawer-body">
+      <!-- Step 1: Cart Items View -->
+      <div id="cartItemsView">
+        <div id="cartItemsContainer">
+          <!-- Cart items rendered dynamically -->
+        </div>
+      </div>
 
-                        // Subtle garment tint feedback
-                        if (hex === '#FFFFFF') {
-                            tintOverlay.style.backgroundColor = 'transparent';
-                            tintOverlay.style.opacity = '0';
-                        } else {
-                            tintOverlay.style.backgroundColor = hex;
-                            tintOverlay.style.opacity = '0.18';
-                        }
-                    });
-                });
-            });
+      <!-- Step 2: FormSubmit.co Checkout Form -->
+      <div id="checkoutView" class="checkout-panel">
+        <button type="button" class="back-to-bag-btn" id="backToBagBtn">
+          ← Back to Shift Bag
+        </button>
 
-            // 3. Category Filtering
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const productCards = document.querySelectorAll('.product-card');
+        <form id="formsubmitCheckoutForm" action="https://formsubmit.co/orders@vitalisscrubs.com" method="POST">
+          <!-- FormSubmit.co Configuration Hidden Fields -->
+          <input type="hidden" name="_subject" id="fsSubject" value="New VITALIS SCRUBS Order">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="Order_Items" id="fsOrderItems">
+          <input type="hidden" name="Item_Count" id="fsItemCount">
+          <input type="hidden" name="Subtotal" id="fsSubtotal">
+          <input type="hidden" name="Shipping" id="fsShipping">
+          <input type="hidden" name="Order_Total" id="fsOrderTotal">
 
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    filterBtns.forEach(b => {
-                        b.classList.remove('bg-navy-900', 'text-white');
-                        b.classList.add('bg-slate-100', 'text-slate-700');
-                    });
-                    btn.classList.remove('bg-slate-100', 'text-slate-700');
-                    btn.classList.add('bg-navy-900', 'text-white');
+          <!-- Destination Email for FormSubmit.co -->
+          <div class="formsubmit-config-box">
+            <label for="merchantEmailInput">FormSubmit.co Recipient Email</label>
+            <input type="email" id="merchantEmailInput" value="orders@vitalisscrubs.com" required placeholder="your-email@domain.com">
+            <small>Enter your email address to receive this order via FormSubmit.co (first submission sends an activation email).</small>
+          </div>
 
-                    const filter = btn.getAttribute('data-filter');
-                    productCards.forEach(card => {
-                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                            card.classList.remove('hidden');
-                        } else {
-                            card.classList.add('hidden');
-                        }
-                    });
-                });
-            });
+          <div class="checkout-field">
+            <label for="custName">Clinician Full Name *</label>
+            <input type="text" id="custName" name="Clinician_Name" placeholder="Dr. Jordan Taylor, MD" required>
+          </div>
 
-            // 4. Cart Drawer & State Management
-            let cart = [
-                { name: 'Apex Core V-Neck Scrub Top', color: 'Deep Navy', size: 'M', price: 42.00, qty: 1 },
-                { name: 'Kinetic 7-Pocket Jogger Scrub Pants', color: 'Deep Navy', size: 'M', price: 54.00, qty: 1 }
-            ];
+          <div class="checkout-field">
+            <label for="custEmail">Clinician Email (for confirmation) *</label>
+            <input type="email" id="custEmail" name="email" placeholder="jordan.taylor@hospital.org" required>
+          </div>
 
-            const cartBtn = document.getElementById('cart-btn');
-            const closeCartBtn = document.getElementById('close-cart-btn');
-            const cartDrawer = document.getElementById('cart-drawer');
-            const cartBackdrop = document.getElementById('cart-drawer-backdrop');
-            const cartItemsContainer = document.getElementById('cart-items-container');
-            const cartBadge = document.getElementById('cart-badge');
-            const drawerCount = document.getElementById('drawer-count');
-            const cartSubtotal = document.getElementById('cart-subtotal');
-            const shippingMsg = document.getElementById('shipping-msg');
+          <div class="checkout-field">
+            <label for="custPhone">Phone Number *</label>
+            <input type="tel" id="custPhone" name="Phone" placeholder="(555) 234-5678" required>
+          </div>
 
-            function openCart() {
-                cartBackdrop.classList.remove('hidden');
-                cartDrawer.classList.remove('translate-x-full');
-            }
+          <div class="checkout-field">
+            <label for="custHospital">Hospital / Clinic & Shipping Address *</label>
+            <textarea id="custHospital" name="Shipping_Address" rows="2" placeholder="450 Medical Center Dr, Suite 300, Boston, MA 02115" required></textarea>
+          </div>
 
-            function closeCart() {
-                cartDrawer.classList.add('translate-x-full');
-                cartBackdrop.classList.add('hidden');
-            }
+          <div class="checkout-field">
+            <label for="custNotes">Embroidery / Shift Notes (Optional)</label>
+            <input type="text" id="custNotes" name="Embroidery_Notes" placeholder="e.g., Left chest: J. Taylor, MD - Surgery">
+          </div>
 
-            cartBtn.addEventListener('click', openCart);
-            closeCartBtn.addEventListener('click', closeCart);
-            cartBackdrop.addEventListener('click', closeCart);
+          <div class="order-recap-card">
+            <h5>Order Summary Being Sent</h5>
+            <div class="order-recap-lines" id="checkoutRecapLines"></div>
+          </div>
 
-            function renderCart() {
-                cartItemsContainer.innerHTML = '';
-                let totalQty = 0;
-                let subtotal = 0;
+          <button type="submit" class="btn btn-primary" style="width:100%;" id="submitOrderBtn">
+            Submit Order via FormSubmit.co
+          </button>
+        </form>
+      </div>
+    </div>
 
-                if (cart.length === 0) {
-                    cartItemsContainer.innerHTML = `
-                        <div class="text-center py-12 text-slate-500">
-                            <p class="font-medium text-navy-900">Your shift bag is empty.</p>
-                            <p class="text-xs mt-1">Add clinical scrubs or lab coats to get started.</p>
-                        </div>
-                    `;
-                } else {
-                    cart.forEach((item, index) => {
-                        totalQty += item.qty;
-                        subtotal += item.price * item.qty;
+    <div class="drawer-footer" id="drawerFooter">
+      <div class="subtotal-row">
+        <span>Subtotal</span>
+        <span id="cartSubtotal">$0.00</span>
+      </div>
+      <p class="drawer-note">Hospital ID discount & tax calculated at checkout.</p>
+      <button class="btn btn-primary" style="width:100%;" id="proceedCheckoutBtn">Proceed to Checkout</button>
+    </div>
+  </aside>
 
-                        const itemEl = document.createElement('div');
-                        itemEl.className = 'flex items-center justify-between gap-4 p-4 rounded-xl bg-slate-50 border border-slate-200/80';
-                        itemEl.innerHTML = `
-                            <div class="flex-1">
-                                <h4 class="font-bold text-sm text-navy-900">${item.name}</h4>
-                                <p class="text-xs text-slate-500 mt-0.5">${item.color} • Size ${item.size}</p>
-                                <p class="text-sm font-bold text-teal-700 mt-1">$${(item.price * item.qty).toFixed(2)}</p>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <button type="button" data-index="${index}" class="qty-dec w-7 h-7 rounded-lg bg-white border border-slate-200 text-navy-900 font-bold text-sm hover:bg-slate-100">-</button>
-                                <span class="text-xs font-bold w-5 text-center">${item.qty}</span>
-                                <button type="button" data-index="${index}" class="qty-inc w-7 h-7 rounded-lg bg-white border border-slate-200 text-navy-900 font-bold text-sm hover:bg-slate-100">+</button>
-                            </div>
-                        `;
-                        cartItemsContainer.appendChild(itemEl);
-                    });
-                }
+  <!-- Toast Notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-                cartBadge.textContent = totalQty;
-                drawerCount.textContent = `${totalQty} ${totalQty === 1 ? 'item' : 'items'}`;
-                cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+  <script>
+    /* ==========================================================================
+       PRODUCT CATALOG DATA
+       ========================================================================== */
+    const products = [
+      {
+        id: 'apex-vneck',
+        name: 'Apex 3-Pocket V-Neck Top',
+        category: 'tops',
+        type: 'top',
+        price: 42,
+        rating: '4.9',
+        reviews: 1240,
+        badge: 'Bestseller',
+        badgeClass: '',
+        subtitle: 'Tailored fit • Reinforced chest pen & badge loop',
+        sizes: ['XS', 'S', 'M', 'L', 'XL'],
+        colors: [
+          { name: 'Deep Navy', hex: '#0F1E33' },
+          { name: 'Ceil Blue', hex: '#4A89B8' },
+          { name: 'Sage Green', hex: '#5C8374' },
+          { name: 'Obsidian Black', hex: '#1E293B' }
+        ]
+      },
+      {
+        id: 'meridian-jogger',
+        name: 'Meridian 7-Pocket Scrub Jogger',
+        category: 'pants',
+        type: 'pant',
+        price: 52,
+        rating: '4.9',
+        reviews: 1890,
+        badge: 'Top Rated',
+        badgeClass: 'teal',
+        subtitle: 'Yoga-knit waistband • Zippered cargo & shear slot',
+        sizes: ['XS', 'S', 'M', 'L', 'XL'],
+        colors: [
+          { name: 'Deep Navy', hex: '#0F1E33' },
+          { name: 'Sage Green', hex: '#5C8374' },
+          { name: 'Obsidian Black', hex: '#1E293B' },
+          { name: 'Clinical Burgundy', hex: '#6B2737' }
+        ]
+      },
+      {
+        id: 'pulse-mock-wrap',
+        name: 'Pulse Athletic Mock-Wrap Top',
+        category: 'tops',
+        type: 'top',
+        price: 44,
+        rating: '4.8',
+        reviews: 785,
+        badge: 'New Drop',
+        badgeClass: 'sage',
+        subtitle: 'Princess seams • Hidden side-entry hip pockets',
+        sizes: ['XS', 'S', 'M', 'L', 'XL'],
+        colors: [
+          { name: 'Sage Green', hex: '#5C8374' },
+          { name: 'Deep Navy', hex: '#0F1E33' },
+          { name: 'Ceil Blue', hex: '#4A89B8' }
+        ]
+      },
+      {
+        id: 'vanguard-straight',
+        name: 'Vanguard Straight-Leg Scrub Pant',
+        category: 'pants',
+        type: 'pant',
+        price: 48,
+        rating: '4.8',
+        reviews: 642,
+        badge: '',
+        badgeClass: '',
+        subtitle: 'Classic tailored drape • Articulated knee gusset',
+        sizes: ['XS', 'S', 'M', 'L', 'XL'],
+        colors: [
+          { name: 'Ceil Blue', hex: '#4A89B8' },
+          { name: 'Deep Navy', hex: '#0F1E33' },
+          { name: 'Obsidian Black', hex: '#1E293B' }
+        ]
+      },
+      {
+        id: 'attending-coat',
+        name: 'Attending Consultation Lab Coat',
+        category: 'outerwear',
+        type: 'coat',
+        price: 88,
+        rating: '5.0',
+        reviews: 512,
+        badge: 'Fluid-Shield™',
+        badgeClass: 'teal',
+        subtitle: 'Tablet-ready inner pocket • Custom embroidery ready',
+        sizes: ['XS', 'S', 'M', 'L', 'XL'],
+        colors: [
+          { name: 'Clinical White', hex: '#F8FAFC' },
+          { name: 'Deep Navy', hex: '#0F1E33' }
+        ]
+      },
+      {
+        id: 'solace-jacket',
+        name: 'Solace Thermal Warm-Up Jacket',
+        category: 'outerwear',
+        type: 'jacket',
+        price: 68,
+        rating: '4.9',
+        reviews: 930,
+        badge: 'OR Favorite',
+        badgeClass: '',
+        subtitle: 'Rib-knit cuffs • Brushed interior for cold suites',
+        sizes: ['XS', 'S', 'M', 'L', 'XL'],
+        colors: [
+          { name: 'Obsidian Black', hex: '#1E293B' },
+          { name: 'Deep Navy', hex: '#0F1E33' },
+          { name: 'Sage Green', hex: '#5C8374' }
+        ]
+      }
+    ];
 
-                if (subtotal >= 75) {
-                    shippingMsg.innerHTML = `You've unlocked <strong>FREE Express Hospital Shipping!</strong>`;
-                } else {
-                    const diff = (75 - subtotal).toFixed(2);
-                    shippingMsg.innerHTML = `Add <strong>$${diff}</strong> more to unlock FREE Express Shipping.`;
-                }
+    /* ==========================================================================
+       STATE MANAGEMENT
+       ========================================================================== */
+    const selectedColorState = {};
+    const selectedSizeState = {};
+    products.forEach(p => {
+      selectedColorState[p.id] = 0;
+      selectedSizeState[p.id] = 'M';
+    });
 
-                // Quantity listeners
-                document.querySelectorAll('.qty-inc').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const idx = parseInt(btn.getAttribute('data-index'), 10);
-                        cart[idx].qty += 1;
-                        renderCart();
-                    });
-                });
+    let cart = [
+      { id: 'apex-vneck', name: 'Apex 3-Pocket V-Neck Top', color: 'Deep Navy', hex: '#0F1E33', size: 'M', price: 42, qty: 1 },
+      { id: 'meridian-jogger', name: 'Meridian 7-Pocket Scrub Jogger', color: 'Deep Navy', hex: '#0F1E33', size: 'M', price: 52, qty: 1 }
+    ];
 
-                document.querySelectorAll('.qty-dec').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const idx = parseInt(btn.getAttribute('data-index'), 10);
-                        if (cart[idx].qty > 1) {
-                            cart[idx].qty -= 1;
-                        } else {
-                            cart.splice(idx, 1);
-                        }
-                        renderCart();
-                    });
-                });
-            }
+    let activeFilter = 'all';
+    let searchQuery = '';
+    let isCheckoutMode = false;
 
-            // Add to Bag buttons
-            document.querySelectorAll('.add-to-bag-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const card = btn.closest('.product-card');
-                    const name = btn.getAttribute('data-name');
-                    const price = parseFloat(btn.getAttribute('data-price'));
-                    const color = card.querySelector('.selected-color-name').textContent;
+    /* ==========================================================================
+       SVG GARMENT RENDERER
+       ========================================================================== */
+    function renderGarmentSVG(type, hex) {
+      const stroke = hex === '#F8FAFC' ? '#0F1E33' : 'rgba(255,255,255,0.28)';
+      if (type === 'top') {
+        return `
+          <svg width="160" height="175" viewBox="0 0 160 175" fill="none">
+            <path d="M48 18L22 34L10 74L34 82L42 54V152H118V54L126 82L150 74L138 34L112 18C101 28 91 33 80 33C69 33 59 28 48 18Z" fill="${hex}" stroke="${stroke}" stroke-width="2"/>
+            <path d="M60 21L80 52L100 21" stroke="${stroke}" stroke-width="2" stroke-linecap="round"/>
+            <rect x="92" y="58" width="18" height="22" rx="2.5" stroke="${stroke}" stroke-width="1.4"/>
+          </svg>`;
+      }
+      if (type === 'pant') {
+        return `
+          <svg width="160" height="175" viewBox="0 0 160 175" fill="none">
+            <path d="M44 16H116L124 156H92L80 74L68 156H36L44 16Z" fill="${hex}" stroke="${stroke}" stroke-width="2"/>
+            <rect x="40" y="64" width="15" height="28" rx="3" stroke="${stroke}" stroke-width="1.4"/>
+            <rect x="105" y="64" width="15" height="28" rx="3" stroke="${stroke}" stroke-width="1.4"/>
+          </svg>`;
+      }
+      if (type === 'coat') {
+        return `
+          <svg width="160" height="175" viewBox="0 0 160 175" fill="none">
+            <path d="M46 16L20 32L10 112H32L40 60V158H120V60L128 112H150L140 32L114 16L80 46L46 16Z" fill="${hex}" stroke="${stroke}" stroke-width="2.2"/>
+            <line x1="80" y1="46" x2="80" y2="158" stroke="${stroke}" stroke-width="1.8"/>
+            <rect x="48" y="102" width="22" height="26" rx="2" stroke="${stroke}" stroke-width="1.4"/>
+            <rect x="90" y="102" width="22" height="26" rx="2" stroke="${stroke}" stroke-width="1.4"/>
+          </svg>`;
+      }
+      return `
+        <svg width="160" height="175" viewBox="0 0 160 175" fill="none">
+          <path d="M46 18L18 34L10 112H32L40 60V154H120V60L128 112H150L142 34L114 18H46Z" fill="${hex}" stroke="${stroke}" stroke-width="2"/>
+          <line x1="80" y1="18" x2="80" y2="154" stroke="#6EE7B7" stroke-width="2"/>
+        </svg>`;
+    }
 
-                    const existing = cart.find(item => item.name === name && item.color === color);
-                    if (existing) {
-                        existing.qty += 1;
-                    } else {
-                        cart.push({ name, color, size: 'M', price, qty: 1 });
-                    }
+    /* ==========================================================================
+       RENDER PRODUCT CARDS
+       ========================================================================== */
+    function renderProducts() {
+      const grid = document.getElementById('productGrid');
+      const filtered = products.filter(p => {
+        const matchesCat = activeFilter === 'all' || p.category === activeFilter;
+        const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                              p.subtitle.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchesCat && matchesSearch;
+      });
 
-                    renderCart();
-                    openCart();
-                });
-            });
+      if (filtered.length === 0) {
+        grid.innerHTML = `<p style="grid-column:1/-1; text-align:center; padding:3rem; color:var(--slate-500);">No medical apparel matched "${searchQuery}". Try clearing your filter.</p>`;
+        return;
+      }
 
-            // Checkout feedback
-            document.getElementById('checkout-btn').addEventListener('click', () => {
-                const toast = document.getElementById('checkout-toast');
-                toast.classList.remove('hidden');
-                setTimeout(() => toast.classList.add('hidden'), 3500);
-            });
+      grid.innerHTML = filtered.map(product => {
+        const colorIdx = selectedColorState[product.id] || 0;
+        const activeColor = product.colors[colorIdx];
+        const activeSize = selectedSizeState[product.id] || 'M';
 
-            // Newsletter form feedback
-            document.getElementById('newsletter-form').addEventListener('submit', (e) => {
-                e.preventDefault();
-                document.getElementById('newsletter-feedback').classList.remove('hidden');
-                e.target.reset();
-            });
+        return `
+          <article class="product-card">
+            <div class="product-media">
+              ${product.badge ? `<span class="product-tag ${product.badgeClass}">${product.badge}</span>` : ''}
+              ${renderGarmentSVG(product.type, activeColor.hex)}
+            </div>
+            <div class="product-body">
+              <div class="product-top-row">
+                <h3 class="product-title">${product.name}</h3>
+                <span class="product-price">$${product.price}</span>
+              </div>
+              <p class="product-subtitle">${product.subtitle}</p>
+              <div class="product-rating">
+                <span class="stars">★★★★★</span>
+                <span>${product.rating}</span>
+                <span style="color:var(--slate-500); font-weight:400;">(${product.reviews})</span>
+              </div>
+              <div class="swatch-row">
+                <div class="swatches" role="group" aria-label="Select Color">
+                  ${product.colors.map((c, idx) => `
+                    <button
+                      type="button"
+                      class="swatch-btn ${idx === colorIdx ? 'selected' : ''}"
+                      style="background-color:${c.hex};"
+                      aria-label="${c.name}"
+                      title="${c.name}"
+                      onclick="selectSwatch('${product.id}', ${idx})"
+                    ></button>
+                  `).join('')}
+                </div>
+                <span class="selected-color-name">${activeColor.name}</span>
+              </div>
+              <div class="size-row">
+                <span class="size-label">Size</span>
+                <div class="size-pills" role="group" aria-label="Select Size">
+                  ${product.sizes.map(sz => `
+                    <button
+                      type="button"
+                      class="size-btn ${sz === activeSize ? 'selected' : ''}"
+                      onclick="selectSize('${product.id}', '${sz}')"
+                    >${sz}</button>
+                  `).join('')}
+                </div>
+              </div>
+              <button type="button" class="add-to-bag-btn" onclick="addToCart('${product.id}')">
+                + Add to Shift Bag
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
 
-            // Initial Render
-            renderCart();
+    function selectSwatch(productId, colorIndex) {
+      selectedColorState[productId] = colorIndex;
+      renderProducts();
+    }
+
+    function selectSize(productId, size) {
+      selectedSizeState[productId] = size;
+      renderProducts();
+    }
+
+    /* ==========================================================================
+       SHOPPING BAG & FORMSUBMIT.CO CHECKOUT LOGIC
+       ========================================================================== */
+    function addToCart(productId) {
+      const product = products.find(p => p.id === productId);
+      const color = product.colors[selectedColorState[productId] || 0];
+      const size = selectedSizeState[productId] || 'M';
+      const existing = cart.find(item => item.id === productId && item.color === color.name && item.size === size);
+
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({
+          id: product.id,
+          name: product.name,
+          color: color.name,
+          hex: color.hex,
+          size: size,
+          price: product.price,
+          qty: 1
         });
-    </script>
+      }
+
+      isCheckoutMode = false;
+      updateCartUI();
+      showToast(`Added ${product.name} (${color.name}, ${size}) to bag`);
+    }
+
+    function updateQty(index, delta) {
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      updateCartUI();
+    }
+
+    function getCartTotals() {
+      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+      const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+      const shippingThreshold = 100;
+      const shippingCost = subtotal === 0 ? 0 : (subtotal >= shippingThreshold ? 0 : 9.95);
+      const grandTotal = subtotal + shippingCost;
+      return { totalItems, subtotal, shippingThreshold, shippingCost, grandTotal };
+    }
+
+    function syncFormSubmitPayload() {
+      const { totalItems, subtotal, shippingCost, grandTotal } = getCartTotals();
+      const lines = cart.map((item, idx) =>
+        `${idx + 1}. ${item.name} — Color: ${item.color} | Size: ${item.size} | Qty: ${item.qty} ($${(item.price * item.qty).toFixed(2)})`
+      );
+
+      const formattedOrder = lines.length > 0 ? lines.join('\n') : 'No items in bag';
+      const shippingLabel = shippingCost === 0 ? 'FREE Express Shipping ($0.00)' : `$${shippingCost.toFixed(2)}`;
+
+      document.getElementById('fsOrderItems').value = formattedOrder;
+      document.getElementById('fsItemCount').value = totalItems;
+      document.getElementById('fsSubtotal').value = `$${subtotal.toFixed(2)}`;
+      document.getElementById('fsShipping').value = shippingLabel;
+      document.getElementById('fsOrderTotal').value = `$${grandTotal.toFixed(2)}`;
+      document.getElementById('fsSubject').value = `New VITALIS SCRUBS Order ($${grandTotal.toFixed(2)} - ${totalItems} item${totalItems === 1 ? '' : 's'})`;
+
+      const recapEl = document.getElementById('checkoutRecapLines');
+      if (recapEl) {
+        recapEl.textContent = `${formattedOrder}\n\nSubtotal: $${subtotal.toFixed(2)}\nShipping: ${shippingLabel}\nTotal Due: $${grandTotal.toFixed(2)}`;
+      }
+    }
+
+    function setDrawerMode(checkout) {
+      isCheckoutMode = checkout;
+      const cartItemsView = document.getElementById('cartItemsView');
+      const checkoutView = document.getElementById('checkoutView');
+      const drawerFooter = document.getElementById('drawerFooter');
+      const drawerTitle = document.getElementById('drawerTitle');
+
+      if (isCheckoutMode) {
+        if (cart.length === 0) {
+          showToast('Add items to your Shift Bag before checking out.');
+          isCheckoutMode = false;
+          return;
+        }
+        syncFormSubmitPayload();
+        cartItemsView.style.display = 'none';
+        checkoutView.classList.add('active');
+        drawerFooter.style.display = 'none';
+        drawerTitle.textContent = 'Shift Bag Checkout';
+      } else {
+        cartItemsView.style.display = 'block';
+        checkoutView.classList.remove('active');
+        drawerFooter.style.display = 'block';
+        drawerTitle.textContent = 'Your Shift Bag';
+      }
+    }
+
+    function updateCartUI() {
+      const container = document.getElementById('cartItemsContainer');
+      const countEl = document.getElementById('cartCount');
+      const subtotalEl = document.getElementById('cartSubtotal');
+      const shippingText = document.getElementById('shippingText');
+      const shippingProgress = document.getElementById('shippingProgress');
+
+      const { totalItems, subtotal, shippingThreshold } = getCartTotals();
+
+      countEl.textContent = totalItems;
+      subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+
+      if (subtotal >= shippingThreshold) {
+        shippingText.innerHTML = '✓ You unlocked <strong>FREE Express Shipping!</strong>';
+        shippingProgress.style.width = '100%';
+      } else {
+        const diff = (shippingThreshold - subtotal).toFixed(2);
+        shippingText.innerHTML = `Add <strong>$${diff}</strong> for FREE Express Shipping`;
+        shippingProgress.style.width = `${Math.min(100, (subtotal / shippingThreshold) * 100)}%`;
+      }
+
+      if (cart.length === 0) {
+        container.innerHTML = `<p style="text-align:center; color:var(--slate-500); padding:3rem 0;">Your shift bag is currently empty.</p>`;
+      } else {
+        container.innerHTML = cart.map((item, idx) => `
+          <div class="cart-item">
+            <div class="cart-item-swatch" style="background-color:${item.hex}; border:1px solid var(--slate-300); color:${item.hex === '#F8FAFC' ? '#0F1E33' : '#FFF'}">
+              ${item.size}
+            </div>
+            <div class="cart-item-info">
+              <h4>${item.name}</h4>
+              <p>${item.color} &bull; Size ${item.size} &bull; $${item.price}</p>
+              <div class="qty-controls">
+                <button type="button" onclick="updateQty(${idx}, -1)" aria-label="Decrease quantity">−</button>
+                <span>${item.qty}</span>
+                <button type="button" onclick="updateQty(${idx}, 1)" aria-label="Increase quantity">+</button>
+              </div>
+            </div>
+            <strong style="color:var(--navy-900);">$${item.price * item.qty}</strong>
+          </div>
+        `).join('');
+      }
+
+      syncFormSubmitPayload();
+      setDrawerMode(isCheckoutMode);
+    }
+
+    function openCart() {
+      document.getElementById('cartDrawer').classList.add('open');
+      document.getElementById('drawerOverlay').classList.add('open');
+    }
+
+    function closeCart() {
+      document.getElementById('cartDrawer').classList.remove('open');
+      document.getElementById('drawerOverlay').classList.remove('open');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2800);
+    }
+
+    /* ==========================================================================
+       EVENT LISTENERS
+       ========================================================================== */
+    document.getElementById('openCartBtn').addEventListener('click', () => {
+      setDrawerMode(false);
+      openCart();
+    });
+    document.getElementById('closeCartBtn').addEventListener('click', closeCart);
+    document.getElementById('drawerOverlay').addEventListener('click', closeCart);
+
+    document.getElementById('proceedCheckoutBtn').addEventListener('click', () => {
+      setDrawerMode(true);
+    });
+
+    document.getElementById('backToBagBtn').addEventListener('click', () => {
+      setDrawerMode(false);
+    });
+
+    // Dynamically update FormSubmit.co form action when merchant email is edited
+    const merchantEmailInput = document.getElementById('merchantEmailInput');
+    const checkoutForm = document.getElementById('formsubmitCheckoutForm');
+
+    merchantEmailInput.addEventListener('input', (e) => {
+      const cleanEmail = e.target.value.trim();
+      if (cleanEmail) {
+        checkoutForm.action = `https://formsubmit.co/${encodeURIComponent(cleanEmail)}`;
+      }
+    });
+
+    checkoutForm.addEventListener('submit', (e) => {
+      const targetEmail = merchantEmailInput.value.trim();
+      if (!targetEmail) {
+        e.preventDefault();
+        showToast('Please enter a valid FormSubmit.co recipient email.');
+        return;
+      }
+      checkoutForm.action = `https://formsubmit.co/${encodeURIComponent(targetEmail)}`;
+      syncFormSubmitPayload();
+      document.getElementById('submitOrderBtn').textContent = 'Sending Order to FormSubmit.co...';
+    });
+
+    document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+      document.getElementById('primaryNav').classList.toggle('open');
+    });
+
+    document.getElementById('searchToggleBtn').addEventListener('click', () => {
+      const drawer = document.getElementById('searchDrawer');
+      drawer.classList.toggle('active');
+      if (drawer.classList.contains('active')) {
+        document.getElementById('searchInput').focus();
+      }
+    });
+
+    document.getElementById('searchForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      searchQuery = document.getElementById('searchInput').value.trim();
+      renderProducts();
+      document.getElementById('bestsellers').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFilter = btn.dataset.filter;
+        renderProducts();
+      });
+    });
+
+    document.querySelectorAll('[data-filter], [data-filter-link]').forEach(link => {
+      link.addEventListener('click', () => {
+        const filter = link.dataset.filter || link.dataset.filterLink;
+        if (!filter) return;
+        activeFilter = filter;
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.toggle('active', b.dataset.filter === filter);
+        });
+        renderProducts();
+        document.getElementById('primaryNav').classList.remove('open');
+      });
+    });
+
+    document.getElementById('groupQuoteBtn').addEventListener('click', () => {
+      showToast('Team Outfitting Desk: group@vitalisscrubs.com (25% Hospital Discount)');
+    });
+
+    document.getElementById('newsletterForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      e.target.reset();
+      showToast('Welcome to Vitalis! Check your inbox for your 15% clinician code.');
+    });
+
+    // Initial Render
+    renderProducts();
+    updateCartUI();
+  </script>
 </body>
 </html>
