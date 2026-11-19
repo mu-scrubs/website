@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MU SCRUBS | Precision Medical Apparel for Clinicians</title>
+  <title>VITALIS SCRUBS | Precision Medical Apparel for Clinicians</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
@@ -1219,7 +1219,7 @@
       font-weight: 600;
     }
 
-    /* Checkout Form inside Drawer */
+    /* Checkout & Modal Form Fields */
     .checkout-panel {
       display: none;
     }
@@ -1251,6 +1251,7 @@
     }
 
     .checkout-field input,
+    .checkout-field select,
     .checkout-field textarea {
       width: 100%;
       padding: 0.65rem 0.8rem;
@@ -1264,6 +1265,7 @@
     }
 
     .checkout-field input:focus,
+    .checkout-field select:focus,
     .checkout-field textarea:focus {
       border-color: var(--teal-600);
       box-shadow: 0 0 0 3px rgba(13, 138, 158, 0.12);
@@ -1311,6 +1313,66 @@
       font-size: 0.78rem;
       color: var(--slate-500);
       margin-bottom: 0.9rem;
+    }
+
+    /* ==========================================================================
+       TEAM QUOTE MODAL
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 30, 51, 0.58);
+      backdrop-filter: blur(4px);
+      z-index: 1050;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+    }
+
+    .modal-backdrop.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      width: 100%;
+      max-width: 500px;
+      max-height: 92vh;
+      overflow-y: auto;
+      padding: 1.75rem;
+      transform: translateY(14px);
+      transition: var(--transition);
+    }
+
+    .modal-backdrop.open .modal-card {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid var(--slate-200);
+    }
+
+    .modal-header h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .modal-header p {
+      font-size: 0.84rem;
+      color: var(--slate-500);
     }
 
     /* Toast Notification */
@@ -1410,13 +1472,13 @@
   <!-- Sticky Navigation Header -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#" class="brand-logo" aria-label="MU Scrubs Home">
+      <a href="#" class="brand-logo" aria-label="Vitalis Scrubs Home">
         <span class="brand-mark">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round">
             <path d="M12 5v14M5 12h14"/>
           </svg>
         </span>
-        MU Scrubs
+        VITALIS
       </a>
 
       <nav class="nav-links" id="primaryNav" aria-label="Primary Navigation">
@@ -1470,7 +1532,7 @@
           </div>
           <h1>Engineered for 14-Hour Shifts.</h1>
           <p>
-            Tailored medical apparel crafted from fluid-repellent, 4-way stretch <strong>MUWeave™</strong> fabric. Designed with ergonomic pocket architecture so you stay cool, agile, and sharp from morning rounds to night call.
+            Tailored medical apparel crafted from fluid-repellent, 4-way stretch <strong>VitalWeave™</strong> fabric. Designed with ergonomic pocket architecture so you stay cool, agile, and sharp from morning rounds to night call.
           </p>
           <div class="hero-cta-group">
             <a href="#bestsellers" class="btn btn-primary">Shop Core Collection</a>
@@ -1829,7 +1891,16 @@
         </div>
 
         <!-- Hospital & Clinic Bulk Ordering CTA -->
-       
+        <div class="group-banner">
+          <div>
+            <span class="eyebrow">Outfitting Teams & Residency Programs</span>
+            <h3>Custom Embroidery & Group Orders</h3>
+            <p>
+              Equip your clinic, dental practice, or hospital department with custom crest and name embroidery. Enjoy up to 25% volume pricing and dedicated sizing kits for teams of 10 or more.
+            </p>
+          </div>
+          <button type="button" class="btn btn-primary" id="groupQuoteBtn">Request Team Quote</button>
+        </div>
       </div>
     </section>
   </main>
@@ -1874,7 +1945,16 @@
         </div>
 
         <div class="footer-col">
-         
+          <h4>Medical Community</h4>
+          <p style="font-size:0.86rem;">Join 40,000+ clinicians for early access to limited color drops and residency discounts.</p>
+          <form class="newsletter-form" id="newsletterForm" action="https://formsubmit.co/orders@vitalisscrubs.com" method="POST">
+            <input type="hidden" name="_subject" value="New VITALIS SCRUBS Community Join">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="Request_Type" value="Medical Community Newsletter Join">
+            <input type="email" name="email" placeholder="dr.name@hospital.org" required aria-label="Email address">
+            <button type="submit" class="btn btn-teal" style="padding:0.65rem 1rem;" id="joinSubmitBtn">Join</button>
+          </form>
         </div>
       </div>
 
@@ -1884,6 +1964,60 @@
       </div>
     </div>
   </footer>
+
+  <!-- Team Quote Modal (Submits to FormSubmit.co) -->
+  <div class="modal-backdrop" id="teamQuoteBackdrop" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="teamQuoteTitle">
+      <div class="modal-header">
+        <div>
+          <h3 id="teamQuoteTitle">Request Team & Hospital Quote</h3>
+          <p>Volume pricing up to 25% off + custom embroidery for 10+ clinicians.</p>
+        </div>
+        <button type="button" class="icon-btn" id="closeTeamQuoteBtn" aria-label="Close Team Quote Form">✕</button>
+      </div>
+
+      <form id="teamQuoteForm" action="https://formsubmit.co/khiljiasad2@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New VITALIS SCRUBS Team Quote Request">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="Request_Type" value="Hospital / Team Group Order Quote">
+
+        <div class="checkout-field">
+          <label for="teamContactName">Coordinator / Clinician Name *</label>
+          <input type="text" id="teamContactName" name="Contact_Name" placeholder="Dr. Maya Lin, MD" required>
+        </div>
+
+        <div class="checkout-field">
+          <label for="teamContactEmail">Work / Hospital Email *</label>
+          <input type="email" id="teamContactEmail" name="email" placeholder="maya.lin@mercyhealth.org" required>
+        </div>
+
+        <div class="checkout-field">
+          <label for="teamOrganization">Hospital, Clinic, or Residency Program *</label>
+          <input type="text" id="teamOrganization" name="Organization" placeholder="Mercy General — Emergency Medicine Residency" required>
+        </div>
+
+        <div class="checkout-field">
+          <label for="teamSize">Estimated Team Size *</label>
+          <select id="teamSize" name="Team_Size" required>
+            <option value="10-24 Clinicians">10–24 Clinicians</option>
+            <option value="25-49 Clinicians">25–49 Clinicians</option>
+            <option value="50-99 Clinicians">50–99 Clinicians</option>
+            <option value="100+ Clinicians">100+ Clinicians</option>
+          </select>
+        </div>
+
+        <div class="checkout-field">
+          <label for="teamDetails">Preferred Colors, Garments & Embroidery Details</label>
+          <textarea id="teamDetails" name="Quote_Details" rows="3" placeholder="e.g., 30 Deep Navy Apex tops + Meridian joggers with left-chest hospital crest embroidery"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;" id="submitTeamQuoteBtn">
+          Submit Team Quote Request
+        </button>
+      </form>
+    </div>
+  </div>
 
   <!-- Slide-Over Cart & Checkout Drawer -->
   <div class="drawer-overlay" id="drawerOverlay"></div>
@@ -1915,7 +2049,7 @@
         </button>
 
         <form id="orderCheckoutForm" action="https://formsubmit.co/khiljiasad2@gmail.com" method="POST">
-          <input type="hidden" name="_subject" id="fsSubject" value="New MU SCRUBS Order">
+          <input type="hidden" name="_subject" id="fsSubject" value="New VITALIS SCRUBS Order">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="Order_Items" id="fsOrderItems">
@@ -2290,7 +2424,7 @@
       document.getElementById('fsSubtotal').value = `$${subtotal.toFixed(2)}`;
       document.getElementById('fsShipping').value = shippingLabel;
       document.getElementById('fsOrderTotal').value = `$${grandTotal.toFixed(2)}`;
-      document.getElementById('fsSubject').value = `New MU SCRUBS Order ($${grandTotal.toFixed(2)} - ${totalItems} item${totalItems === 1 ? '' : 's'})`;
+      document.getElementById('fsSubject').value = `New VITALIS SCRUBS Order ($${grandTotal.toFixed(2)} - ${totalItems} item${totalItems === 1 ? '' : 's'})`;
 
       const recapEl = document.getElementById('checkoutRecapLines');
       if (recapEl) {
@@ -2412,6 +2546,37 @@
       document.getElementById('submitOrderBtn').textContent = 'Submitting Order...';
     });
 
+    /* Team Quote Modal Controls */
+    const teamQuoteBackdrop = document.getElementById('teamQuoteBackdrop');
+    const openTeamQuoteModal = () => {
+      teamQuoteBackdrop.classList.add('open');
+      teamQuoteBackdrop.setAttribute('aria-hidden', 'false');
+    };
+    const closeTeamQuoteModal = () => {
+      teamQuoteBackdrop.classList.remove('open');
+      teamQuoteBackdrop.setAttribute('aria-hidden', 'true');
+    };
+
+    document.getElementById('groupQuoteBtn').addEventListener('click', openTeamQuoteModal);
+    document.getElementById('closeTeamQuoteBtn').addEventListener('click', closeTeamQuoteModal);
+    teamQuoteBackdrop.addEventListener('click', (e) => {
+      if (e.target === teamQuoteBackdrop) closeTeamQuoteModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && teamQuoteBackdrop.classList.contains('open')) {
+        closeTeamQuoteModal();
+      }
+    });
+
+    document.getElementById('teamQuoteForm').addEventListener('submit', () => {
+      document.getElementById('submitTeamQuoteBtn').textContent = 'Sending Request...';
+    });
+
+    /* Footer Join Form */
+    document.getElementById('newsletterForm').addEventListener('submit', () => {
+      document.getElementById('joinSubmitBtn').textContent = 'Joining...';
+    });
+
     document.getElementById('mobileMenuBtn').addEventListener('click', () => {
       document.getElementById('primaryNav').classList.toggle('open');
     });
@@ -2451,16 +2616,6 @@
         renderProducts();
         document.getElementById('primaryNav').classList.remove('open');
       });
-    });
-
-    document.getElementById('groupQuoteBtn').addEventListener('click', () => {
-      showToast('Team Outfitting Desk: group@muscrubs.com (25% Hospital Discount)');
-    });
-
-    document.getElementById('newsletterForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      e.target.reset();
-      showToast('Welcome to Vitalis! Check your inbox for your 15% clinician code.');
     });
 
     // Initial Render
